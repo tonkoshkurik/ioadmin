@@ -1,0 +1,112 @@
+.contact { // body class
+    .contact-bg {
+        background: #312d32 url('../img/contact-right-bg.jpg') no-repeat center center !important;
+        background-size: 100% auto;
+        // background-position: center center;
+        position: fixed;
+        right: 0;
+        height: 100vh;
+        z-index: 1;
+        top: 0;
+    }
+
+    .blog-header p {
+        margin-top: 45px;
+    }
+
+    .lang-switcher {
+        position: absolute;
+        top: 45px;
+        right: calc(50% - 70px);
+    }
+
+
+    .header.main, .blog-header {
+        background: #f5f5f5;
+    }
+    background-color: #f5f5f5;
+    .contact-table{
+        color: #312d32;
+        @media (max-width: 767px) {
+            margin-bottom: 50px;
+        }
+        @media (min-width: 767px){
+            margin-top: 20px;
+        }
+        
+        .contact-head{
+            padding: 20px 0;
+            color: #695d6c;
+            h1{
+                margin: 0;
+            }
+            span svg, 
+            span i {
+                margin-right: 10px;
+            }
+            @media (min-width: 767px) {
+                display: flex;
+                align-items: center;
+            }
+            @media (max-width: 767px) {
+                div{
+                    margin-bottom: 20px
+                }
+            }
+            @media (min-width: 767px) and (max-width: 1170px) {
+                span{
+                    font-size: 14px;
+                }
+                h1{
+                    font-size: 35px;
+                }
+
+            }
+        }
+        .contact-icon-box{
+            @media (min-width: 767px) {
+                text-align: center;
+            }
+            @media (max-width: 767px) {
+                img {
+                    width: 50px;
+                }
+            }
+        }
+        .contact-tr{
+            padding: 55px 0;
+            @media (max-width: 767px) {
+                padding: 0;
+                div{
+                    margin: 15px 0px;
+                }
+            }
+            .active {
+                display: none;
+            }
+        }
+        .contact-tr:hover{
+            background-color: #efefef;
+            .default{
+                display: none;
+            }
+            .active {
+                display: initial;
+            }
+        }
+    }
+}
+
+.two-header {
+    @media all and( max-width: 767px) {
+        .box-header-min.contact {
+            padding-left: 15px;
+            background: #f5f5f5;
+            h1{
+                padding-left: 0;
+                font-size: 28px;
+                margin: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,229 @@
+// reviews index
+.two-header {
+    background: $bg-grey;
+    color: #000;
+    margin-top: -30px;
+    .two-header-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-content: space-around;
+        align-items: center;
+        height: 180px;
+        .menu-flex {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+            flex: 7 0 auto;
+            height: 80px;
+            li {
+                flex: 1 1 33%;
+                padding-right: 30px;
+                @media all and( max-width: 320px) {
+                    padding-right: 0;
+                }
+            }
+            @media ( max-width: 767px) {
+                padding: 0;
+            }
+        }
+        ul.menu a {
+            font-size: 18px;
+        }
+        ul.menu .active a {
+            font-weight: 700;
+        }
+        ul.menu a:hover {
+            font-weight: 700;
+        }
+        @media all and( max-width: 600px) {
+            height: 80px;
+        }
+    }
+    .box-header {
+        // flex-basis: 20%;
+        flex: 2 3 auto;
+        height: 125px;
+        margin-top: 45px;
+    }
+    .box-header-min {
+        display: none;
+        background: #dff0ef;
+        h1 {
+            margin: 0 0 0 10.333333%;
+            padding: 10px 0 20px 25px;
+            font-size: 30px;
+        }
+    }
+    @media all and( max-width: 600px) {
+        margin-top: -65px;
+        .box-header {
+            display: none;
+        }
+        .box-header-min {
+            display: block;
+            h1 {
+                //margin: 0 0 0 10.333333%;
+                margin-left: 15px;
+                padding-left: 0;
+            }
+        }
+    }
+}
+.comments-index.photo-page .comment {
+    padding: 0;
+}
+.comments-index {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    color:#312d32;
+    
+    .comment {
+        // flex-basis: 640px;
+        // max-width: 640px;
+        margin-top: 60px;
+        .comment-box {
+            .btn {
+                margin: 25px 0;
+            }
+            .btn-primary {
+                padding: 12px 25px;
+                border-radius: 0;
+                color: #000;
+                background: #f0dfdf;
+                border-color: transparent;
+            }
+            .btn-primary:hover {
+                color: #fff;
+                background: #312d32;
+                border-color: #312d32;
+            }
+            .comment-text {
+                img{
+                    max-width: 100%;
+                }
+                @media all and( min-width: 767px) {
+                    background-image: url(../img/facebook-logo.png);
+                    background-repeat: no-repeat;
+                    background-color: #f5f6f8;
+                    min-height: 400px;
+                    display: flex;
+                    flex-direction:column;
+                    justify-content:center;
+                    align-items:center;
+                }
+            }
+            .comment-img img{
+                width: 100%;
+            }
+            .comment-footer {
+                // display: flex;
+                // justify-content: space-between;
+                // position: relative;
+                font-size: 14px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                padding: 10px 15px;
+                .name-user{
+                    display: flex;
+                    img {
+                        right: 0;
+                    }
+                    span {
+                        right: 0;
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: black;
+                    }
+                    @media (max-width: 767px) {
+                        justify-content: space-between;
+                        .user-medal {
+                            order: 1;
+                        }
+                    }
+                }
+                .name-user.page-photo{
+                    justify-content: space-between;
+                    .user-medal {
+                        order: 1;
+                    }
+                }
+                .slim {
+                    
+                    font-size: 16px;
+                    label {
+                        margin-right: 10px;
+                        font-weight: normal;
+                        font-size: 13px;
+                        display: contents;
+                    }
+                    .weight-box{
+                        div{
+                            float: left;
+                        }
+                        margin-left: 20px;
+                        .weight {
+                            margin-left: 10px;
+                            .number{
+                            margin-right: 5px;
+                            width: 30px;
+                            height: 30px;
+                            background: #f0dfdf;
+                            font-size: 18px;
+                            text-align: center;
+                            color: #000;
+                            border-radius: 15px;
+                            line-height: 27px;
+                            font-weight: 400;
+                            }
+                        }
+                        .unit{
+                            line-height: 27px;
+                        }
+                    }
+                    display: flex;
+                    justify-content: space-between;
+                    @media (max-width: 767px) {
+                        margin-top: 10px;
+                        label{
+                            font-size: 18px;
+                        }
+                    }
+                }
+                .slim.page-photo{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                    label{
+                        font-size: 18px;
+                    }
+                }
+                .dop-info{
+                    margin-top: 40px;
+                }
+            }
+        }
+    }
+}
+
+.header.main.pink{
+    background-color: #f0dfdf;
+}
+.next-page-btn.pink{
+    background-color: #f0dfdf; 
+}
+.next-page-btn:hover{
+    background-color:#312d32
+}
+.navigation li.pink.active a{
+    background-color: #f0dfdf; 
+    color: #312d32;
+}
+.box-header-min.pink{
+    background-color: #f0dfdf; 
+}
+.margin0{
+    margin: 0;
+}
+

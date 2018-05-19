@@ -1,0 +1,122 @@
+.breadcrumb {
+  font-size: 18px;
+  background-color: #fff;
+  padding: 50px 0;
+  li a {
+    color: #0f080d;
+  }
+  li + li:before {
+    content: ">";
+    color: #0f080d;
+  }
+}
+.product-desc {
+  .product-photo {
+    .slider-product-for {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    .slider-product-nav {
+      img {
+        &:hover {
+          padding: 10px;
+        }
+        cursor: pointer;
+      }
+    }
+  }
+  .product-info {
+    .product-size-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      a {
+        min-width: 55px;
+        padding: 15px;
+        background: #fafafa;
+        font-size: 18px;
+        text-align: center;
+        color: #000;
+        font-weight: 300;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover,
+        &.active {
+          background: #e5f0df;
+        }
+      }
+    }
+  }
+  .stock-price {
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-end;
+    
+    .price-box {
+      width: 40%;
+      .price-old {
+        font-size: 18px;
+        text-decoration: line-through;
+      }
+      .price {
+        color: #312d32;
+        font-size: 24px;
+        span{
+          font-size: 48px;
+          @media (max-width: 1400px) {
+            font-size: 36px;
+          }
+        }
+      }
+    }
+    .btn{
+      width: 60%;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+      padding:0 30px;
+      @media (max-width: 1400px) {
+        padding:0 20px;
+      }
+    }
+  }
+  .product-description{
+    font-size: 18px;
+    color: #0f080d;
+  }
+  .info-button-box{
+    display: flex;
+    justify-content:space-around;
+  }
+}
+.slick-prev {
+  margin-left: -45px;
+  background-image: url(../img/swiper-button-left-black.png);
+  &:hover {
+    background-image: url(../img/swiper-button-left.png);
+  }
+}
+.slick-next {
+  margin-right: -45px;
+  background-image: url(../img/swiper-button-next.png);
+  &:hover {
+    background-image: url(../img/swiper-button-next.white.png);
+  }
+}
+.slick-prev,
+.slick-next {
+  height: 75px;
+  width: 170px;
+  background-color: #e5f0df;
+  border: #e5f0df;
+  line-height: 0px;
+  font-size: 0px;
+  background-size: 28px;
+  background-repeat: no-repeat;
+  background-position: center;
+  &:hover {
+    background-color: #312d32;
+  }
+}

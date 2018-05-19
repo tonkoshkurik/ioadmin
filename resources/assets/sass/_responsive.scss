@@ -1,0 +1,217 @@
+// Menu 
+
+@media all and (max-width: 600px){
+    .menu-overlay {
+        // display: no
+        // opacity: 0;
+        .toggleNav {
+            display: block;
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            color: #7c7b77;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        .flex-menu {
+            display: none !important; 
+            // height: 0;
+            opacity: 0;
+        transition: all 5s linear;
+        transform:translate(0);
+        }
+    }
+    .open > .close {
+        display: block !important;
+        position: absolute;
+        right: 30px;
+        color: #aaa3ac;
+        top: 30px;
+        z-index: 111;
+    }
+    .open > .flex-menu {
+        display: block !important;
+        opacity: 1;
+        padding-top: 10%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background: $bg-footer;
+        flex-direction: column;
+        // transition: 0.5s;
+        li{
+            padding: 10px;
+            flex: 1 0 100%;
+            a {
+                color: #aaa3ac;
+            }
+        }
+    }
+}
+
+// blog categories
+@media all and( max-width: 720px) {
+.blog-header-wrapper {
+    flex-wrap: wrap;
+    min-height: 180px;
+    .cats-toggle {
+        display: block !important;
+        // color: #0f080d; // !important;
+    }
+    .menu-flex {
+        display: none !important ;
+    }
+    .menu-flex.open {
+        display: flex !important;
+        flex: 1 0 100%;
+        padding: 30px;
+    }
+}
+}
+
+@media all and (max-width: 780px) {
+    // 
+
+    .blog-header .blog-header-wrapper .box-header {
+        flex: 2;
+    }
+    // pagination 
+    
+    .navigation > div {
+        flex-wrap: wrap;
+    }
+    .navigation li.next {
+        float: none;
+    }
+    .navigation li {
+        padding: 5px;
+    }
+
+    .lang-container {
+        display: none;
+    }
+    footer > div {
+        height: 400px;
+        align-items: center;
+        align-content: center;
+        flex-wrap: wrap;
+        .box {
+            // border: 1px solid red;
+        }
+        .phone {
+            display: flex;
+            order: 10;
+            align-items: center;
+            margin: 25px 0;
+            justify-content: space-around;
+            max-width: 175px;
+            flex-wrap: wrap;
+            > p {
+                flex-basis: 100%;    
+            }
+            // flex-wrap: wrap;
+            // width: 190px;
+        }
+        .social{ 
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .logo {
+            order: 11;
+        }
+        .social {
+            order: 11;
+        }
+    }
+}
+
+
+@media all and (max-width: 425px) {
+    .lang {
+        display: none;
+    }
+    .flex-menu {
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    footer > div {
+
+        padding-top: 40px;
+        .box {
+            flex: 1; 
+        }
+
+        .social {
+
+        }
+        ul.menu > li {
+            flex: 1 0 50%;
+        }
+
+        .phone {
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: center;
+            flex-basis: 100% !important;
+            p {
+                padding-left: 15px;
+                flex-basis: 100%;
+            }
+        } 
+        .logo {
+            order: 12;
+            flex: 1 0 30%;
+        }
+        .social {
+            order: 13;
+            flex: 1 0 50%;
+        }
+
+    }
+    .header.main {
+        nav {
+            float: 2;
+            .flex-menu {
+                display:flex;
+                flex-direction:column;
+                li {
+                    flex-basis: 100%;
+                }
+            }          
+        }
+    }
+    .blog-header .blog-header-wrapper .menu-flex {
+        display: none;
+        flex-direction: column;
+        flex-wrap: wrap;
+        li {
+            flex: 1 0 100%; 
+        }
+    }
+
+    .navigation {
+        min-height: 185px;
+        display: flex; 
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        .box {
+            flex: 0;
+        }   
+        .navs {
+            flex-basis: 100%;
+            order: 1;
+        }
+    }
+}

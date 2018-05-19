@@ -1,0 +1,70 @@
+// FOOTER 
+
+footer {
+    background: #312d32;
+    min-height: 130px;
+    // display: flex;
+    align-items: center;
+    z-index: 22;
+    position: relative;
+    .social {
+    //     font-size: 23px;
+    //     color: #695d6c;
+        svg{
+            margin: 10px;
+        }
+    }
+}
+footer > div {
+    display: flex;
+    color: #aaa3ac;
+    font-size: 14px;
+    height: 130;
+    justify-content: space-between;
+    align-content: space-around;
+    align-items: center;
+    .box {
+        flex: 1 0 auto;
+    }
+    .logo {
+        flex: 1;
+        color:#695d6c;
+        margin: 15px;
+        img {
+            padding: 12px 10px;
+        }
+        p{
+            // padding-top: 20px;
+        }
+    }
+
+    .box-last {
+        flex: 3 3 auto;
+    }
+
+    ul.menu {
+        max-width: 100%;
+        flex: 4 0 auto;
+        display: inline-flex;
+        // flex-direction: column;
+        flex-wrap: wrap;
+        // padding: 0;
+        // margin: 0;
+        margin: 25px 0;
+        // width: 100%;
+        li{
+            flex: 1 0 33%;
+        }
+        li>a {
+            font-size: 14px;
+            color: #aaa3ac; 
+            font-weight: 200;
+    }
+    }
+}
+@media all and (min-width: 900px) {
+    footer>div ul.menu {
+        flex: 3 0 480px;
+        width: 480px;
+    }
+}

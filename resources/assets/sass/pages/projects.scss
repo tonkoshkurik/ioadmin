@@ -1,0 +1,207 @@
+.header-projects.background-projects {
+    background: url(../img/header4.png) 100% 20% no-repeat;
+    @media (max-width: 991px) and (min-width: 320px) {
+        background: url(../img/header5.png) 100% 20% no-repeat;
+    }
+    @media (max-width: 320px) {
+        background: url(../img/header6.png) 100% 20% no-repeat;
+    }
+}
+
+@media (max-width: 767px) {
+    .margin-top-minus50 {
+        margin-top: -50px !important;
+    }
+}
+
+.information-box {
+    padding-bottom: 0;
+    position: relative;
+    padding-top: 60px;
+    color: #312d32;
+    .dop-content {
+        margin-top: 70px;
+        @media (max-width: 1500px) {
+            margin-top: 45px;
+        }
+        @media (max-width: 767px) {
+            margin-top: 0;
+        }
+    }
+    .projects-info {
+        margin-top: 10%;
+    }
+    @media(max-width: 767px) {
+        .img-mobail-box {
+            overflow: hidden;
+            padding-top: 7%;
+            max-height: 260px;
+        }
+    }
+}
+
+.badge-white {
+    color: #000;
+    background-color:#fff;
+    font-weight: 400;
+    border-radius: 17px;
+    padding: 0px 10px;
+}
+
+@media(max-width: 767px) {
+    .information-box.background-red {
+        display: flex;
+        flex-wrap: wrap; // flex-direction:column;
+        .title-box {
+            order: -2;
+            width: 70%;
+            padding-left: 15px;
+        }
+        .dop-content {
+            order: -1;
+            width: 100%;
+            padding-left: 15px;
+        }
+        .img-mobail-box {
+            order: 1;
+            width: 30%;
+            .img-mobail{
+                width: 170%;
+            }
+        }
+        .information-text-box {
+            order: 0;
+            width: 70%;
+        }
+        .mini-logo-box {
+            order: -2;
+            width: 30%;
+        }
+       
+        
+    }
+}
+
+@media all and (min-width:767px) {
+    .object {
+        /** This css rule will make the object 
+    move smoothly and animated **/
+        transition: all 2s ease-in-out;
+    }
+    /** VERTICALLY MOVEMENT **/
+    /** Moving object upwards**/
+    .information-box:hover .move-up {
+        filter: none !important;
+        transform: translate(0, -160px);
+        -webkit-transform: translate(0, -160px);
+        -o-transform: translate(0, -160px);
+        -moz-transform: translate(0, -160px);
+    }
+}
+
+.background-green {
+    background-color: #f5f5f5;
+}
+
+.background-red {
+    background-color: #ebe6e6;
+}
+
+.img-mobail {
+    top: 140px;
+    position: relative;
+    float: right;
+    width: 100%;
+    filter: grayscale(100%);
+    @media(max-width: 767px) {
+        top: 0;
+        float: none;
+        filter: none;
+        position: sticky;
+        width: 150%;
+        max-width: 150px;
+    }
+}
+
+.logo-box {
+    margin-top: 140px;
+    @media(max-width: 1400px) {
+        margin-top: 60px;
+    }
+    @media(min-width: 1500px) {
+        width: 70%;
+    }
+    @media (max-width: 1200px){
+        margin-top: 25px;
+    }
+    @media (max-width: 768px){
+        margin-top: 0px;
+        img{
+            filter: grayscale(100%); 
+        }
+    }
+    display: flex;
+    justify-content: space-between;
+    img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.mini-logo {
+    width: 65%;
+    @media (max-width: 1200px) {
+        width: 100%;
+    }
+    @media (max-width: 767px) {
+        margin-bottom: 0 !important;
+        float: right;
+        // width: 70%;
+        max-width: 74px;
+    }
+}
+
+.btn-dop-info {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    font-size: 16px;
+    text-decoration:underline;
+    @media (max-width: 1500px) {
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    @media(max-width:767px) {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 0;
+    }
+}
+.info-body{
+    .project1:hover{
+        color: #00528b;
+        i{
+            background-image: url(../img/swiper-button-next-blue2.png);
+        }
+    }
+    .project2:hover{
+        color: #dd4413;
+        i{
+            background-image: url(../img/swiper-button-next-read.png);
+        }
+    }
+    .project3:hover{
+        color: #97319e;
+        i{
+            background-image: url(../img/swiper-button-next-purple.png);
+        }
+    }
+}
+
+@media (max-width: 320px) and (max-width: 768px){
+    .text-size h2.project {
+        font-size: 24px;
+    }
+}
+.b400{
+    font-weight: 400;
+}
