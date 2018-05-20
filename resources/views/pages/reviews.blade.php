@@ -4,24 +4,7 @@
 <div class="page container-fluid">
     <div class="row header main">
         <div class="col-md-8 col-xs-offset-1">
-            <header>
-                <div class="logo box">
-                    <img src="img/logo.png" alt="Igor Obuhovsky logo">
-                </div>
-                <nav class="menu-overlay">
-                    <a href="#" class="toggleNav"></a>
-                    <ul class="menu box flex-menu">
-                        @foreach($menu as $menuitem)
-                            <li class="menu-item">
-                                <a href="{{ $menuitem->url() }}">
-                                    {{$menuitem->name}}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                    <a href="#" class="close" style="font-size:2em;"><i class="fas fa-times"></i></a>
-                </nav>
-            </header>
+            @include('layouts.header')
         </div>
         <div class="col-md-3 hidden-sm lang-container">
             <div class="box lang"></div>
@@ -37,135 +20,573 @@
     </div>
 
     <div class="row two-header">
-        <div class="box-header-min">
+        <div class="box-header-min pink">
             <h1>Отзывы</h1>
         </div>
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 two-header-wrapper">
             <div class="box-header top-0">
                 <h1>Отзывы</h1>
             </div>
-            <ul class="menu menu-flex">
-                <li class="menu-item"><a href="#">Фото</a></li>
-                <li class="menu-item"><a href="#">Видео</a></li>
-                <li class="menu-item"><a href="#">Отзывы</a></li>
+            <ul class="menu menu-flex" role="tablist">
+                <li role="presentation" class="active menu-item">
+                    <a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">Фото</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#video" aria-controls="video" role="tab" data-toggle="tab">Видео</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Отзывы</a>
+                </li>
             </ul>
-
-        </div>
-
-    </div>
-
-    <div class="row comments-index">
-
-        <div class="comment col-md-6 col-lg-4 col-lg-offset-1">
-            <div class="comment-box">
-                <div class="comment-text">
-                    <img src="img/facebook-logo.png">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
-                </div>
-                <div class="row comment-footer">
-                    <div class="name-user col-sm-5 col-xs-12">
-                        <img src="img/Medal1.png">
-                        <span>Оксана</span>
-                    </div>
-                    <div class="slim col-sm-7 col-xs-12">
-                        <label>Похудела на</label>
-                        <span><i>24</i>кг</span>
-                        <span><i>24</i>см</span>
-                    </div>
-                </div>
-                <button class="btn btn-primary">Подробнее</button>
-            </div>
-        </div>
-
-        <div class="comment col-md-6 col-lg-4 col-lg-offset-1">
-            <div class="comment-box">
-                <div class="comment-text">
-                    <img src="img/facebook-logo.png">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
-                </div>
-                <div class="row comment-footer">
-                    <div class="name-user col-sm-5 col-xs-12">
-                        <span>Оксана</span>
-                    </div>
-                    <div class="slim col-sm-7 col-xs-12">
-                        <label>Похудела на</label>
-                        <span><i>24</i>кг</span>
-                        <span><i>24</i>см</span>
-                    </div>
-                </div>
-                <button class="btn btn-primary">Подробнее</button>
-            </div>
-        </div>
-
-        <div class="comment col-md-6 col-lg-4 col-lg-offset-1">
-            <div class="comment-box">
-                <div class="comment-text">
-                    <img src="img/facebook-logo.png">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
-                </div>
-                <div class="row comment-footer">
-                    <div class="name-user col-sm-5 col-xs-12">
-                        <span>Оксана</span>
-                    </div>
-                    <div class="slim col-sm-7 col-xs-12">
-                        <label>Похудела на</label>
-                        <span><i>24</i>кг</span>
-                        <span><i>24</i>см</span>
-                    </div>
-                </div>
-                <button class="btn btn-primary">Подробнее</button>
-            </div>
-        </div>
-
-        <div class="comment col-md-6 col-lg-4 col-lg-offset-1">
-            <div class="comment-box">
-                <div class="comment-text">
-                    <img src="img/facebook-logo.png">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
-                </div>
-                <div class="row comment-footer">
-                    <div class="name-user col-sm-5 col-xs-12">
-                        <img src="img/Medal2.png">
-                        <span>Оксана</span>
-                    </div>
-                    <div class="slim col-sm-7 col-xs-12">
-                        <label>Похудела на</label>
-                        <span><i>24</i>кг</span>
-                        <span><i>24</i>см</span>
-                    </div>
-                </div>
-                <button class="btn btn-primary">Подробнее</button>
-            </div>
         </div>
     </div>
 
+    <div class="tab-content">
 
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="photo">
+                <div class="row comments-index photo-page">
+                    <div class="row col-xs-12 margin0">
+                        <div class="comment col-xs-12 col-sm-6 col-lg-2 col-lg-offset-1">
+                            <div class="comment-box">
+                                <div class="comment-img">
+                                    <img src="img/comment/5.png">
+                                </div>
+                                <div class="row comment-footer">
+                                    <div class="name-user page-photo col-xs-12 padding0">
+                                        <div class="user-medal">
+                                            <img src="img/Medal1.png">
+                                        </div>
+                                        <div class="user-name">
+                                            <span>Татьяна</span>
+                                        </div>
+                                    </div>
+                                    <div class="slim page-photo col-xs-12 padding0">
+                                        <label>Похудела на</label>
+                                        <div class="weight-box">
+                                            <div class="weight">
+                                                <div class="number">5</div>
+                                                <div class="unit">кг</div>
+                                            </div>
+                                            <div class="weight">
+                                                <div class="number">25</div>
+                                                <div class="unit">см</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dop-info col-xs-12 padding0">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                        <button class="btn btn-primary pink">Подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <!-- <div class="row">
-<h1>Все, что я делаю —<br>
-    следствие многолетней<br>
-    любви к спорту </h1>
-<div class="col-md-6">
-  <p>Моя цель — помочь <br>
-      полюбить его другим.</p>
-</div>
-</div>
+                        <div class="comment col-xs-12 col-sm-6 col-lg-2 col-lg-offset-2">
+                            <div class="comment-box">
+                                <div class="comment-img">
+                                    <img src="img/comment/5.png">
+                                </div>
+                                <div class="row comment-footer">
+                                    <div class="name-user page-photo col-xs-12 padding0">
+                                        <div class="user-medal">
+                                            <img src="img/Medal1.png">
+                                        </div>
+                                        <div class="user-name">
+                                            <span>Татьяна</span>
+                                        </div>
+                                    </div>
+                                    <div class="slim page-photo col-xs-12 padding0">
+                                        <label>Похудела на</label>
+                                        <div class="weight-box">
+                                            <div class="weight">
+                                                <div class="number">5</div>
+                                                <div class="unit">кг</div>
+                                            </div>
+                                            <div class="weight">
+                                                <div class="number">25</div>
+                                                <div class="unit">см</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dop-info col-xs-12 padding0">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                        <button class="btn btn-primary pink">Подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
--->
+                        <div class="comment col-xs-12 col-sm-6 col-lg-2 col-lg-offset-2">
+                            <div class="comment-box">
+                                <div class="comment-img">
+                                    <img src="img/comment/5.png">
+                                </div>
+                                <div class="row comment-footer">
+                                    <div class="name-user page-photo col-xs-12 padding0">
+                                        <div class="user-medal">
+                                            <img src="img/Medal1.png">
+                                        </div>
+                                        <div class="user-name">
+                                            <span>Татьяна</span>
+                                        </div>
+                                    </div>
+                                    <div class="slim page-photo col-xs-12 padding0">
+                                        <label>Похудела на</label>
+                                        <div class="weight-box">
+                                            <div class="weight">
+                                                <div class="number">5</div>
+                                                <div class="unit">кг</div>
+                                            </div>
+                                            <div class="weight">
+                                                <div class="number">25</div>
+                                                <div class="unit">см</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dop-info col-xs-12 padding0">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                        <button class="btn btn-primary pink">Подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-xs-12 margin0">
+                        <div class="comment col-xs-12 col-sm-6 col-lg-2 col-lg-offset-1">
+                            <div class="comment-box">
+                                <div class="comment-img">
+                                    <img src="img/comment/5.png">
+                                </div>
+                                <div class="row comment-footer">
+                                    <div class="name-user page-photo col-xs-12 padding0">
+                                        <div class="user-medal">
+                                            <img src="img/Medal1.png">
+                                        </div>
+                                        <div class="user-name">
+                                            <span>Татьяна</span>
+                                        </div>
+                                    </div>
+                                    <div class="slim page-photo col-xs-12 padding0">
+                                        <label>Похудела на</label>
+                                        <div class="weight-box">
+                                            <div class="weight">
+                                                <div class="number">5</div>
+                                                <div class="unit">кг</div>
+                                            </div>
+                                            <div class="weight">
+                                                <div class="number">25</div>
+                                                <div class="unit">см</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dop-info col-xs-12 padding0">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                        <button class="btn btn-primary pink">Подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment col-xs-12 col-sm-6 col-lg-2 col-lg-offset-2">
+                            <div class="comment-box">
+                                <div class="comment-img">
+                                    <img src="img/comment/5.png">
+                                </div>
+                                <div class="row comment-footer">
+                                    <div class="name-user page-photo col-xs-12 padding0">
+                                        <div class="user-medal">
+                                            <img src="img/Medal1.png">
+                                        </div>
+                                        <div class="user-name">
+                                            <span>Татьяна</span>
+                                        </div>
+                                    </div>
+                                    <div class="slim page-photo col-xs-12 padding0">
+                                        <label>Похудела на</label>
+                                        <div class="weight-box">
+                                            <div class="weight">
+                                                <div class="number">5</div>
+                                                <div class="unit">кг</div>
+                                            </div>
+                                            <div class="weight">
+                                                <div class="number">25</div>
+                                                <div class="unit">см</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dop-info col-xs-12 padding0">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                        <button class="btn btn-primary pink">Подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment col-xs-12 col-sm-6 col-lg-2 col-lg-offset-2">
+                            <div class="comment-box">
+                                <div class="comment-img">
+                                    <img src="img/comment/5.png">
+                                </div>
+                                <div class="row comment-footer">
+                                    <div class="name-user page-photo col-xs-12 padding0">
+                                        <div class="user-medal">
+                                            <img src="img/Medal1.png">
+                                        </div>
+                                        <div class="user-name">
+                                            <span>Татьяна</span>
+                                        </div>
+                                    </div>
+                                    <div class="slim page-photo col-xs-12 padding0">
+                                        <label>Похудела на</label>
+                                        <div class="weight-box">
+                                            <div class="weight">
+                                                <div class="number">5</div>
+                                                <div class="unit">кг</div>
+                                            </div>
+                                            <div class="weight">
+                                                <div class="number">25</div>
+                                                <div class="unit">см</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dop-info col-xs-12 padding0">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                        <button class="btn btn-primary pink">Подробнее</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="video">
+                <div class="row comments-index">
+
+                    <div class="comment col-xs-12 col-sm-6 col-lg-4 col-lg-offset-1">
+                        <div class="comment-box">
+                            <div class="comment-video">
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ni9LIPaIKOg" frameborder="0" allow="autoplay; encrypted-media"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="row comment-footer">
+                                <div class="name-user col-sm-5 col-xs-12 padding0">
+                                    <div class="user-medal">
+                                        <img src="img/Medal1.png">
+                                    </div>
+                                    <div class="user-name">
+                                        <span>Татьяна</span>
+                                    </div>
+                                </div>
+                                <div class="slim col-sm-7 col-xs-12 padding0">
+                                    <label>Похудела на</label>
+                                    <div class="weight-box">
+                                        <div class="weight">
+                                            <div class="number">5</div>
+                                            <div class="unit">кг</div>
+                                        </div>
+                                        <div class="weight">
+                                            <div class="number">25</div>
+                                            <div class="unit">см</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dop-info col-xs-12 padding0 visible-xs">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                    <button class="btn btn-primary pink">Подробнее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment col-xs-12 col-sm-6 col-lg-4 col-lg-offset-1">
+                        <div class="comment-box">
+                            <div class="comment-video">
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ni9LIPaIKOg" frameborder="0" allow="autoplay; encrypted-media"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="row comment-footer">
+                                <div class="name-user col-sm-5 col-xs-12 padding0">
+                                    <div class="user-name">
+                                        <span>Татьяна</span>
+                                    </div>
+                                </div>
+                                <div class="slim col-sm-7 col-xs-12 padding0">
+                                    <label>Похудела на</label>
+                                    <div class="weight-box">
+                                        <div class="weight">
+                                            <div class="number">5</div>
+                                            <div class="unit">кг</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dop-info col-xs-12 padding0 visible-xs">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                    <button class="btn btn-primary pink">Подробнее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment col-xs-12 col-sm-6 col-lg-4 col-lg-offset-1">
+                        <div class="comment-box">
+                            <div class="comment-video">
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ni9LIPaIKOg" frameborder="0" allow="autoplay; encrypted-media"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="row comment-footer">
+                                <div class="name-user col-sm-5 col-xs-12 padding0">
+                                    <div class="user-name">
+                                        <span>Татьяна</span>
+                                    </div>
+                                </div>
+                                <div class="slim col-sm-7 col-xs-12 padding0">
+                                    <label>Похудела на</label>
+                                    <div class="weight-box">
+                                        <div class="weight">
+                                            <div class="number">5</div>
+                                            <div class="unit">кг</div>
+                                        </div>
+                                        <div class="weight">
+                                            <div class="number">25</div>
+                                            <div class="unit">см</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dop-info col-xs-12 padding0 visible-xs">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                    <button class="btn btn-primary pink">Подробнее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment col-xs-12 col-sm-6 col-lg-4 col-lg-offset-1">
+                        <div class="comment-box">
+                            <div class="comment-video">
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ni9LIPaIKOg" frameborder="0" allow="autoplay; encrypted-media"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="row comment-footer">
+                                <div class="name-user col-sm-5 col-xs-12 padding0">
+                                    <div class="user-medal">
+                                        <img src="img/Medal2.png">
+                                    </div>
+                                    <div class="user-name">
+                                        <span>Татьяна</span>
+                                    </div>
+                                </div>
+                                <div class="slim col-sm-7 col-xs-12 padding0">
+                                    <label>Похудела на</label>
+                                    <div class="weight-box">
+                                        <div class="weight">
+                                            <div class="number">5</div>
+                                            <div class="unit">кг</div>
+                                        </div>
+                                        <div class="weight">
+                                            <div class="number">25</div>
+                                            <div class="unit">см</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dop-info col-xs-12 padding0 visible-xs">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                    <button class="btn btn-primary pink">Подробнее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="reviews">
+                <div class="row comments-index">
+
+                    <div class="comment col-xs-12 col-sm-6 col-lg-4 col-lg-offset-1">
+                        <div class="comment-box">
+                            <div class="comment-text hidden-xs">
+                                <div class="img-comment">
+                                    <img src="img/comment/1.png">
+                                </div>
+                            </div>
+                            <div class="comment-text visible-xs">
+                                <img src="img/facebook-logo.png">
+                                <img src="img/comment/1.png">
+                            </div>
+                            <div class="row comment-footer">
+                                <div class="name-user col-sm-5 col-xs-12 padding0">
+                                    <div class="user-medal">
+                                        <img src="img/Medal1.png">
+                                    </div>
+                                    <div class="user-name">
+                                        <span>Татьяна</span>
+                                    </div>
+                                </div>
+                                <div class="slim col-sm-7 col-xs-12 padding0">
+                                    <label>Похудела на</label>
+                                    <div class="weight-box">
+                                        <div class="weight">
+                                            <div class="number">5</div>
+                                            <div class="unit">кг</div>
+                                        </div>
+                                        <div class="weight">
+                                            <div class="number">25</div>
+                                            <div class="unit">см</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dop-info col-xs-12 padding0 visible-xs">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                    <button class="btn btn-primary pink">Подробнее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment col-xs-12 col-sm-6 col-lg-4 col-lg-offset-1">
+                        <div class="comment-box">
+                            <div class="comment-text hidden-xs">
+                                <div class="img-comment">
+                                    <img src="img/comment/2.png">
+                                </div>
+                            </div>
+                            <div class="comment-text visible-xs">
+                                <img src="img/facebook-logo.png">
+                                <img src="img/comment/2.png">
+                            </div>
+                            <div class="row comment-footer">
+                                <div class="name-user col-sm-5 col-xs-12 padding0">
+                                    <div class="user-name">
+                                        <span>Татьяна</span>
+                                    </div>
+                                </div>
+                                <div class="slim col-sm-7 col-xs-12 padding0">
+                                    <label>Похудела на</label>
+                                    <div class="weight-box">
+                                        <div class="weight">
+                                            <div class="number">5</div>
+                                            <div class="unit">кг</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dop-info col-xs-12 padding0 visible-xs">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                    <button class="btn btn-primary pink">Подробнее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment col-xs-12 col-sm-6 col-lg-4 col-lg-offset-1">
+                        <div class="comment-box">
+                            <div class="comment-text hidden-xs">
+                                <div class="img-comment">
+                                    <img src="img/comment/3.png">
+                                </div>
+                            </div>
+                            <div class="comment-text visible-xs">
+                                <img src="img/facebook-logo.png">
+                                <img src="img/comment/3.png">
+                            </div>
+                            <div class="row comment-footer">
+                                <div class="name-user col-sm-5 col-xs-12 padding0">
+                                    <div class="user-name">
+                                        <span>Татьяна</span>
+                                    </div>
+                                </div>
+                                <div class="slim col-sm-7 col-xs-12 padding0">
+                                    <label>Похудела на</label>
+                                    <div class="weight-box">
+                                        <div class="weight">
+                                            <div class="number">5</div>
+                                            <div class="unit">кг</div>
+                                        </div>
+                                        <div class="weight">
+                                            <div class="number">25</div>
+                                            <div class="unit">см</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dop-info col-xs-12 padding0 visible-xs">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                    <button class="btn btn-primary pink">Подробнее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment col-xs-12 col-sm-6 col-lg-4 col-lg-offset-1">
+                        <div class="comment-box">
+                            <div class="comment-text hidden-xs">
+                                <div class="img-comment">
+                                    <img src="img/comment/4.png">
+                                </div>
+                            </div>
+                            <div class="comment-text visible-xs">
+                                <img src="img/facebook-logo.png">
+                                <img src="img/comment/4.png">
+                            </div>
+                            <div class="row comment-footer">
+                                <div class="name-user col-sm-5 col-xs-12 padding0">
+                                    <div class="user-medal">
+                                        <img src="img/Medal2.png">
+                                    </div>
+                                    <div class="user-name">
+                                        <span>Татьяна</span>
+                                    </div>
+                                </div>
+                                <div class="slim col-sm-7 col-xs-12 padding0">
+                                    <label>Похудела на</label>
+                                    <div class="weight-box">
+                                        <div class="weight">
+                                            <div class="number">5</div>
+                                            <div class="unit">кг</div>
+                                        </div>
+                                        <div class="weight">
+                                            <div class="number">25</div>
+                                            <div class="unit">см</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dop-info col-xs-12 padding0 visible-xs">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi</p>
+                                    <button class="btn btn-primary pink">Подробнее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 
 
     <div class="row">
         <div class="navigation">
             <div class="col-xs-10 col-sm-offset-1">
                 <ul class="navs">
-                    <li class="active"><a href="https://futureprocurement.net/procurement-blog/">1</a></li>
-                    <li><a href="https://futureprocurement.net/procurement-blog/page/2/">2</a></li>
-                    <li><a href="https://futureprocurement.net/procurement-blog/page/3/">3</a></li>
+                    <li class="active"><a href="">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
                     <li>…</li>
-                    <li><a href="https://futureprocurement.net/procurement-blog/page/12/">12</a></li>
+                    <li><a href="">12</a></li>
                 </ul>
                 <div class="box">
-                    <li class="next"><a href="https://futureprocurement.net/procurement-blog/page/2/">Следующая <img src="img/arrow-next.png" alt="Следующая"></a></li>
+                    <li class="next"><a href="">Следующая <img src="img/arrow-next.png" alt="Следующая"></a></li>
                 </div>
             </div>
         </div>
@@ -203,13 +624,8 @@
                     <i class="fab fa-youtube" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
                 </div>
             </div>
-
         </div>
-
     </footer>
-
-
-
 
 </div>
 @endsection

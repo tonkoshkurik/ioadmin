@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Backpack\NewsCRUD\app\Models\Article;
+use App\Post;
 use Illuminate\Http\Request;
 use Backpack\MenuCRUD;
 use App\Models\Review;
@@ -22,7 +22,7 @@ class PageController extends Controller
     $this->data['title'] = $page->title;
     $this->data['page'] =  $page->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
-    $this->data['blog'] =  Article::all()->map(function($item){
+    $this->data['blog'] =  Post::all()->map(function($item){
       $item->except = $this->trim_text($item->content, 120);
       return $item;
     });

@@ -1,7 +1,7 @@
 <header>
     <div class="logo box">
         <a href="{{ url('/') }}">
-            <img src="img/logo.png" alt="Igor Obuhovsky logo">
+            <img src="{{ asset("img/logo.png") }}" alt="Igor Obuhovsky logo">
         </a>
     </div>
     <nav class="menu-overlay">

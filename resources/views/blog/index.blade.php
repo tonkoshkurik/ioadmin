@@ -50,7 +50,7 @@
             @foreach($posts as $post)
             <div class="post col-xs-12 col-md-4 col-sm-offset-1">
                 <h2>{{$post->title}}</h2>
-                <img src="{{ $post->image }}"
+                <img src="{{ $post->thumb }}"
                      alt="{{$post->title}}"
                      class="img-responsive">
                 <div class="post-meta">
@@ -58,7 +58,7 @@
                         {{ $post->category->name }}
                     </a>
                     <p class="date">
-                        {{ $post->date }}
+                        {{ $post->date->format('y/m/d') }}
                     </p>
                 </div>
                 <div class="clearfix"></div>

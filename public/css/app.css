@@ -2483,7 +2483,7 @@ footer > div ul.menu li > a {
   margin: 70px auto 80px auto;
 }
 
-#comment-form input[type="text"] {
+#comment-form input[type='text'] {
   height: 65px;
   border: 1px solid #000;
   border-radius: 0;
@@ -2520,6 +2520,7 @@ footer > div ul.menu li > a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  font-weight: 400;
 }
 
 .comment-meta span {

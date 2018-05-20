@@ -11,5 +11,20 @@ Route::group([
     'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
-  CRUD::resource('review', 'ReviewCrudController');
+ CRUD::resource('review', 'ReviewCrudController');
+ CRUD::resource('comment', 'CommentCrudController');
+//  CRUD::resource('article', 'ArticleCrudController');
+//  CRUD::resource('category', 'CategoryCrudController');
+//  CRUD::resource('tag', 'TagCrudController');
 }); // this should be the absolute last line of this file
+
+
+ Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'),
+ 'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
+ 'namespace' => 'App\Http\Controllers\Admin'],
+ function () {
+   // Backpack\NewsCRUD
+   CRUD::resource('article', 'ArticleCrudController');
+   CRUD::resource('category', 'CategoryCrudController');
+   CRUD::resource('tag', 'TagCrudController');
+ });

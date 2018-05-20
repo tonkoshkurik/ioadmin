@@ -76,6 +76,30 @@ return [
     |
     */
 
-    'options' => [],
+    'options' => [
+        		// 'bind' => array(
+            	// 		'upload.presave' => array(
+            	// 			'Plugin.AutoResize.onUpLoadPreSave'
+            	// 		)
+            	// 	),
+            	// 	// global configure (optional)
+            	// 	'plugin' => array(
+            	// 		'AutoResize' => array(
+            	// 			'enable'         => true,       // For control by volume driver
+            	// 			'maxWidth'       => 1024,       // Path to Water mark image
+            	// 			'maxHeight'      => 1024,       // Margin right pixel
+            	// 			'quality'        => 95,         // JPEG image save quality
+            	// 			'preserveExif'   => false,      // Preserve EXIF data (Imagick only)
+            	// 			'forceEffect'    => false,      // For change quality or make progressive JPEG of small images
+            	// 			'targetType'     => IMG_GIF|IMG_JPG|IMG_PNG|IMG_WBMP, // Target image formats ( bit-field )
+            	// 			'offDropWith'    => null,       // Enabled by default. To disable it if it is dropped with pressing the meta key
+            	// 			                                // Alt: 8, Ctrl: 4, Meta: 2, Shift: 1 - sum of each value
+            	// 			                                // In case of using any key, specify it as an array
+            	// 			'onDropWith'     => null        // Disabled by default. To enable it if it is dropped with pressing the meta key
+            	// 			                                // Alt: 8, Ctrl: 4, Meta: 2, Shift: 1 - sum of each value
+            	// 			                                // In case of using any key, specify it as an array
+            	// 		)
+            	// 	),
+    ],
 
 ];

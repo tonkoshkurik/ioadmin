@@ -18,5 +18,9 @@ Route::get('kontakty', 'PageController@contacts');
 
 Route::get('blog', 'BlogController@index');
 
+Route::get('blog', 'BlogController@index');
+Route::get('blog/{slug}', 'BlogController@post');
+Route::post('blog/{post}/comment', 'BlogController@addcomment');
+
 Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
   ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);

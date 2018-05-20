@@ -5,10 +5,10 @@
     <div class="row header main header-projects header-index " style="background:none;">
 
       <div class="col-sm-12" style="position: relative; z-index: 2;">
-        <div class="col-md-8 col-xs-offset-1">
+        <div class="col-md-7 col-xs-offset-1">
           @include('layouts.header')
         </div>
-        <div class="col-md-3 hidden-sm lang-container">
+        <div class="col-md-3 col-md-offset-1 hidden-sm lang-container">
           <div class="box lang"></div>
           <div class="lang-switcher box lang">
             <p style="text-align: left;">
@@ -34,7 +34,6 @@
                 button
                 button-url
               }
-
           --}}
           <div class="swiper-slide slide-img1" style="background: url(../img/header-2.png) 50% 50% no-repeat;">
             <div class="swiper-content-text">
@@ -476,10 +475,10 @@
         <div class="post margin-top30 col-md-4">
           <h3>{{$article->title}}</h3>
           <a href="{{  url( '/blog/' . $article->slug) }}">
-            <img src="{{ $article->image }}" alt="Как быстро получить пресс с кубиками изменив только питание" class="img-responsive">
+            <img src="{{ $article->thumb }}" alt="Как быстро получить пресс с кубиками изменив только питание" class="img-responsive">
           </a>
           <div class="excerpt">
-            <p>{{$article->excerpt}}</p>
+            <p>{{$article->excerpt()}}</p>
           </div>
           <hr>
           <div class="post-meta">
@@ -502,11 +501,6 @@
 
 
 @section('js')
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <script src="{{ url('js/main.js') }}"></script>
     <!-- Swiper JS -->
     <script src="{{ url('js/swiper.min.js') }}"></script>
     <script>
