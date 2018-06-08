@@ -56,18 +56,23 @@ h2 {
 
 .btn-primary{
     background-color: #312d32;
-    padding: 20px 25px;
+    //padding: 20px 25px;
+    padding: 10px 25px;
     border-radius: 0;
     border-color:#312d32;
 }
 .btn-primary:hover,
+.btn-primary:focus:active,
 .btn-primary:focus{
     background-color: $bg-main;
     border-color: $bg-main;
     color:#312d32;
 }
-.btn-primary:active{
-    background-color: $bg-main;
-    border-color: $bg-main;
+
+.btn-primary.green:hover,
+.btn-primary.green:focus:active,
+.btn-primary.green:focus{
+    background-color: #e5f0df;
+    border-color: #e5f0df;
     color:#312d32;
 }

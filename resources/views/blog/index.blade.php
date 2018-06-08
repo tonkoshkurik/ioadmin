@@ -35,11 +35,6 @@
                         <a href="{{ url('blog/' . $cat->slug) }}">{{$cat->name}}</a>
                     </li>
                     @endforeach
-                    {{--<li class="menu-item"><a href="#">Питание</a></li>--}}
-                    {{--<li class="menu-item"><a href="about.html">Полезные советы</a></li>--}}
-                    {{--<li class="menu-item"><a href="#">Работа организма</a></li>--}}
-                    {{--<li class="menu-item"><a href="about.html">Упражнения </a></li>--}}
-                    {{--<li class="menu-item"><a href="#">Здоровый образ жизни</a></li>--}}
                 </ul>
 
             </div>

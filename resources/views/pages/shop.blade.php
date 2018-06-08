@@ -27,7 +27,7 @@
                 <div class="menu-item">
                     <a href="#" class="cats-toggle cart">
                         <i class="fas fa-shopping-cart"></i>
-                        <span class="label">2</span>
+                        <span class="label">{{ $cart or 0 }}</span>
                     </a>
                 </div>
             </div>
@@ -45,8 +45,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-3 two-header-cart">
                     <a href="#" class="cats-toggle">
-                        <i class="fas fa-shopping-cart"></i> Список товаров
-                        <span class="label">2</span>
+                        <i class="fas fa-shopping-cart"></i> Товаров добавлено
+                        <span class="label">{{ $cart or 0 }}</span>
                     </a>
                 </div>
             </div>

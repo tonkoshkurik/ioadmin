@@ -9,9 +9,8 @@
 }
 
 .btn-home{
-    padding: 20px 65px;
-    span{
-        margin-right: 20px;
+    svg{
+        transform: rotate(180deg);
     }
 }
 .label-green{

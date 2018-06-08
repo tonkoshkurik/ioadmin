@@ -179,20 +179,21 @@
 .info-body{
     .project1:hover{
         color: #00528b;
-        i{
-            background-image: url(../img/swiper-button-next-blue2.png);
+        svg{
+            fill: #00528b;
         }
+        
     }
-    .project2:hover{
+    .project2:hover{ 
         color: #dd4413;
-        i{
-            background-image: url(../img/swiper-button-next-read.png);
+        svg{
+            fill: #dd4413;
         }
     }
     .project3:hover{
         color: #97319e;
-        i{
-            background-image: url(../img/swiper-button-next-purple.png);
+        svg{
+            fill: #97319e;
         }
     }
 }

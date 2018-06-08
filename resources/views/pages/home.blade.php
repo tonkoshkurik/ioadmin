@@ -474,7 +474,7 @@
         @foreach($blog as $article)
         <div class="post margin-top30 col-md-4">
           <h3>{{$article->title}}</h3>
-          <a href="{{  url( '/blog/' . $article->slug) }}">
+          <a href="{{  url( '/blog/post/' . $article->slug) }}">
             <img src="{{ $article->thumb }}" alt="Как быстро получить пресс с кубиками изменив только питание" class="img-responsive">
           </a>
           <div class="excerpt">

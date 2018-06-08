@@ -63,14 +63,13 @@ class BlogController extends Controller
                   'email.email' => 'Проверьте правильность ввода поля email',
                   'content.required' => 'Коментарий должен быть не менее 5-ти символов',
                   'name.min' => 'Поле имя должно содержать не менее 3-ех символов',
-                  'email.required' => 'Поле имя обязательно для заполнения',
+                  'email.required' => 'Поле email обязательно для заполнения',
                   'content.min' => 'Коментарий должен быть не менее 5-ти символов'
             ]);
 
       if ($validator->fails()) {
             $flash = '<ul>';
             $errors = $validator->errors();
-            // dd($errors->all());
             foreach ($errors->all() as $message) {
                   $flash .= '<li>' . $message . '</li>';
              }
@@ -86,6 +85,6 @@ class BlogController extends Controller
       $comment = new Comment($r->all());
       $post->comments()->save($comment);
       flash('Коментарий успешно добавлен')->success();
-      return redirect()->back()->with('success', ['Коментарий добавлен']);   
+      return redirect()->back(); //->with('success', ['Коментарий добавлен']);   
     }
 }

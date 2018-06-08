@@ -19,7 +19,7 @@ class Review extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name', 'video', 'content', 'category_id','image','result_kg', 'result_sm','icon','url' ];
+    protected $fillable = ['name', 'video', 'content', 'category_id','image','result_kg', 'icon', 'url' ];
     // protected $hidden = [];
     // protected $dates = [];
 

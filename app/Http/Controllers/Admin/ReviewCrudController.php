@@ -49,7 +49,7 @@ class ReviewCrudController extends CrudController
 //      ]);
 
       $this->crud->addField([
-          'label' => "Category",
+          'label' => "Категория",
           'name' => 'category_id', // the db column for the foreign key
           'type' => 'select_from_array',
           'options' => [ 1 => 'Фото', 2 => 'Отзывы', 3 => 'Видео'],
@@ -68,7 +68,7 @@ class ReviewCrudController extends CrudController
 
       $this->crud->addField([
           'name' => 'image',
-          'label' => 'Image',
+          'label' => 'Картинка',
           'type' => 'browse'
       ]);
 
@@ -90,11 +90,11 @@ class ReviewCrudController extends CrudController
         'type' => 'text',
       ]);
 
-      $this->crud->addField([
-        'label' => "Результат (см)",
-        'name' => 'result_sm', // the db column for the foreign key
-        'type' => 'text',
-      ]);
+//      $this->crud->addField([
+//        'label' => "Результат (см)",
+//        'name' => 'result_sm', // the db column for the foreign key
+//        'type' => 'text',
+//      ]);
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');

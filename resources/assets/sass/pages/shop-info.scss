@@ -143,9 +143,8 @@
 }
 
 .btn-buy-order {
-    padding: 15px 25px;
-    span {
-        margin-right: 15px;
+    svg{
+        transform: rotate(90deg);
     }
     @media (max-width: 767px) {
         width: 100%;

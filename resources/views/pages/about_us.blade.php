@@ -3,14 +3,14 @@
 @section('body')
     <div class="page container-fluid">
         <div class="row header main header-about background-about">
-            <div class="col-md-8 col-xs-offset-1">
+            <div class="col-md-7 col-xs-offset-1">
                 @include('layouts.header')
 
             </div>
-            <div class="col-md-3 hidden-sm lang-container">
+            <div class="col-md-3 col-md-offset-1 hidden-sm lang-container">
                 <div class="box lang"></div>
                 <div class="lang-switcher box lang">
-                    <p style="text-align: left;">
+                    <p style="text-align: left; display: none;">
                         <span style="font-size: 12px; font-family: OpenSans; color: rgb(216, 209, 217);">Ru </span>
                         <span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);"> En </span>
                         <span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);">Uk</span>
