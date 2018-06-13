@@ -240,9 +240,9 @@
 @endsection
 
 @section('js')
-    <script src="{{url('js/slick.min.js')}}"></script>
+    <script src="{{ url('js/slick.min.js') }}"></script>
     <script>
-      $('.slider-product-for').slick({
+    $('.slider-product-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: true,
