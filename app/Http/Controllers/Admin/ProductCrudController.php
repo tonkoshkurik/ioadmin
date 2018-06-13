@@ -36,6 +36,11 @@ class ProductCrudController extends CrudController
           'type' => 'text'
         ],
         [
+          'label' => 'URl slug',
+          'name' => 'slug',
+          'type' => 'text'
+        ],
+        [
          'name'=>'base_price',
           'label' => 'Базовая цена',
           'type'=> 'number',
@@ -47,7 +52,9 @@ class ProductCrudController extends CrudController
         ],
       [
         'name'=>'sizes',
-        'type' => 'text'
+        'type' => 'select2_from_array',
+        'options' => ['s' => "S",'m' => "M",'l'=>"L",'xl'=>"XL"],
+        'allows_multiple' => true, 
       ],
       [
         'type' => 'summernote',
@@ -67,7 +74,6 @@ class ProductCrudController extends CrudController
         'upload' => true,
         'disk' => 'uploads'
       ],
-
       ]);
 
        $this->crud->addField( [
@@ -97,12 +103,17 @@ class ProductCrudController extends CrudController
       $this->crud->addField([
           'label' => 'Состав',
           'name' => 'staff',
-          'type' => 'text',
+          'type' => 'summernote',
         'fake' => true, // show the field, but don’t store it in the database column above
         'store_in' => 'extras'
         ]);
-
-
+        $this->crud->addField([
+          'label' => 'Особенности',
+          'name' => 'something',
+          'type' => 'summernote',
+        'fake' => true, // show the field, but don’t store it in the database column above
+        'store_in' => 'extras'
+        ]);
 
       $this
         ->crud
@@ -126,6 +137,10 @@ class ProductCrudController extends CrudController
       $this->crud->addColumn([
         'name' => 'name',
         'label' => 'Name',
+      ]);
+      $this->crud->addColumn([
+        'name' => 'slug',
+        'label' => 'Slug url',
       ]);
       $this->crud->addColumn([
         'name' => 'base_price',

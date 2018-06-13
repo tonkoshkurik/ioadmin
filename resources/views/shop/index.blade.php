@@ -9,113 +9,11 @@
                         <i class="fas fa-times"></i>
                     </button>
                     <h4>
-                        <img src="../img/Icon1.png"> Добавленные товары
+                        <img src="{{ url('../img/Icon1.png') }}"> Добавленные товары
                     </h4>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="row product-box">
-                            <div class="col-xs-4 col-sm-3">
-                                <img src="../img/Group12.png" width="100%">
-                            </div>
-                            <div class="col-xs-8 col-sm-9">
-                                <div class="row">
-                                    <div class="col-xs-7 title-box">
-                                        <span>Майка белая</span>
-                                    </div>
-                                    <div class="col-xs-5 close-box">
-                                        <button class="btn btn-primary green btn-close">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-7">
-                                        <div class="input-group group-quantity">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="quantity-left-minus btn btn-quantity" data-type="minus" data-field="">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                            </span>
-                                            <input type="text" id="quantity" name="quantity" class="form-control input-quantity" value="1" min="1" max="100">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="quantity-right-plus btn btn-quantity" data-type="plus" data-field="">
-                                                    <i class="fas fa-plus"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="price-box col-xs-12 col-sm-5">
-                                        <span>100 грн</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="row product-box">
-                            <div class="col-xs-4 col-sm-3">
-                                <img src="../img/Group12.png" width="100%">
-                            </div>
-                            <div class="col-xs-8 col-sm-9">
-                                <div class="row">
-                                    <div class="col-xs-7 title-box">
-                                        <span>Майка белая</span>
-                                    </div>
-                                    <div class="col-xs-5 close-box">
-                                        <button class="btn btn-primary green btn-close">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-7">
-                                        <div class="input-group group-quantity">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="quantity-left-minus btn btn-quantity" data-type="minus" data-field="">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                            </span>
-                                            <input type="text" id="quantity" name="quantity" class="form-control input-quantity" value="1" min="1" max="100">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="quantity-right-plus btn btn-quantity" data-type="plus" data-field="">
-                                                    <i class="fas fa-plus"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="price-box col-xs-12 col-sm-5">
-                                        <span>100 грн</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-xs-12  price-block">
-                            <button class="btn btn-primary green big-btn btn-buy-order" name="submit">
-                                <span>Оформить заказ</span>
-                                <i class="black">
-                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">
-                                        <path d="M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111
-                                                                         C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587
-                                                                         c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z"
-                                        />
-                                    </svg>
-                                </i>
-                            </button>
-                            <div class="order-price">
-                                <div>Всего</div>
-                                <div class="sum-price">
-                                    <b>375</b> грн
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="shop-cart"></div>
+                
             </div>
         </div>
     </div>
@@ -180,39 +78,28 @@
 
         <div class="row stocks-box">
             <ul class="sleder-baner-product">
+                @foreach ($slider as $slide)
+                    
                 <li class="stock-box">
                     <div class="content-box">
                         <div class="element">
                             <div class="stock-label-box">
-                                <span class="stock-label">Акция 3</span>
+                                <span class="stock-label">{{ $slide->label }}</span>
                             </div>
                         </div>
                         <div class="element">
                             <div class="stock-text">
-                                <h2>Пакет "Мiцнi горiшкi"
-                                    <br> По супер цене</h2>
-                                <p>
-                                    <span>Футболка</span>+
-                                    <span>Эспадер</span>+
-                                    <span>Бутылка для воды</span>+
-                                    <span>Коврык</span>
-                                </p>
+                                <h2>{!! $slide->title !!}</h2>
+                          {!! $slide->description !!}
                             </div>
                         </div>
                         <div class="element stock-img">
-                            <img src="img/stock-img.png">
+                            <img src="{{ url($slide->image) }}">
                         </div>
                         <div class="element">
                             <div class="stock-price">
-                                <div class="price-box">
-                                    <div class="price-old">
-                                        <span>300</span> грн
-                                    </div>
-                                    <div class="price">
-                                        <span>100 грн</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary green big-btn btn-buy">
+                                {!! $slide->prices !!}
+                                <a href="{{ $slide->url }}" class="btn btn-primary green big-btn btn-buy">
                                     <span>Купить</span>
                                     <i class="black">
                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -223,107 +110,12 @@
                                                 />
                                             </svg>
                                     </i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="stock-box">
-                    <div class="content-box">
-                        <div class="element">
-                            <div class="stock-label-box">
-                                <span class="stock-label">Акция 1</span>
-                            </div>
-                        </div>
-                        <div class="element">
-                            <div class="stock-text">
-                                <h2>Пакет "Мiцнi горiшкi"
-                                    <br> По супер цене</h2>
-                                <p>
-                                    <span>Футболка</span>+
-                                    <span>Эспадер</span>+
-                                    <span>Бутылка для воды</span>+
-                                    <span>Коврык</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="element stock-img">
-                            <img src="img/stock-img.png">
-                        </div>
-                        <div class="element">
-                            <div class="stock-price">
-                                <div class="price-box">
-                                    <div class="price-old">
-                                        <span>300</span> грн
-                                    </div>
-                                    <div class="price">
-                                        <span>100 грн</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary green big-btn btn-buy">
-                                    <span>Купить</span>
-                                    <i class="black">
-                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">
-                                                <path d="M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111
-                                                                                        C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587
-                                                                                        c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z"
-                                                />
-                                            </svg>
-                                    </i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="stock-box">
-                    <div class="content-box">
-                        <div class="element">
-                            <div class="stock-label-box">
-                                <span class="stock-label">Акция 2</span>
-                            </div>
-                        </div>
-                        <div class="element">
-                            <div class="stock-text">
-                                <h2>Пакет "Мiцнi горiшкi"
-                                    <br> По супер цене</h2>
-                                <p>
-                                    <span>Футболка</span>+
-                                    <span>Эспадер</span>+
-                                    <span>Бутылка для воды</span>+
-                                    <span>Коврык</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="element stock-img">
-                            <img src="img/stock-img.png">
-                        </div>
-                        <div class="element">
-                            <div class="stock-price">
-                                <div class="price-box">
-                                    <div class="price-old">
-                                        <span>300</span> грн
-                                    </div>
-                                    <div class="price">
-                                        <span>100 грн</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary green big-btn btn-buy">
-                                    <span>Купить</span>
-                                    <i class="black">
-                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">
-                                                <path d="M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111
-                                                                                        C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587
-                                                                                        c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z"
-                                                />
-                                            </svg>
-                                    </i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                @endforeach
             </ul>
 
 
@@ -382,36 +174,7 @@
         <div class="row background-light-grey">
             <div class="navigation">
                 <div class="col-xs-10 col-xs-offset-1">
-                    <ul class="navs green">
-                        <li class="active">
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>…</li>
-                        <li>
-                            <a href="#">12</a>
-                        </li>
-                    </ul>
-                    <div class="box">
-                        <li class="next">
-                            <a>
-                                <span>Следующая</span>
-                                <i class="next-page-btn green">
-                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">
-                                        <path d="M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111
-                                                C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587
-                                                c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z"
-                                        />
-                                    </svg>
-                                </i>
-                            </a>
-                        </li>
+                    {!! $products->links('vendor.pagination.default') !!}
                     </div>
                 </div>
             </div>

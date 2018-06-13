@@ -41,7 +41,8 @@ class Product extends Model
     'extras'
   ];
   protected $casts = [
-    'photos' => 'array'
+    'photos' => 'array',
+    'sizes' => 'array',
   ];
     // protected $hidden = [];
     // protected $dates = [];

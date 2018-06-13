@@ -7,6 +7,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use Backpack\MenuCRUD;
 use App\Models\Review;
+use App\Models\ShopSlider;
 use Backpack\PageManager\app\Models\Page;
 
 class PageController extends Controller
@@ -66,13 +67,14 @@ class PageController extends Controller
     $this->data['title'] = $page->title;
     $this->data['page'] =  $page->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
+    $this->data['slider'] = ShopSlider::all();
     $this->data['products'] = Product::paginate(4);
     return view('shop.index', $this->data);
   }
   public function product($slug)
   {
     $product = Product::findBySlug($slug);
-    $this->data['title'] = $product->title;
+    $this->data['title'] = $product->name;
     $this->data['product'] =  $product->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
     return view('shop.product', $this->data);

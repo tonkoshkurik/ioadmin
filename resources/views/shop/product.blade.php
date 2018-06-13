@@ -1,7 +1,22 @@
 @extends('layouts.main')
 
 @section('body')
-
+ <div id="modal-cart" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn btn-primary green btn-close btn-close-modal" type="button" data-dismiss="modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <h4>
+                        <img src="{{ url('../img/Icon1.png') }}"> Добавленные товары
+                    </h4>
+                </div>
+            <div id="shop-cart"></div>
+                
+            </div>
+        </div>
+    </div>
     <div class="page container-fluid">
         <div class="row header main green">
             <div class="col-xs-12 col-md-8 col-sm-offset-1">
@@ -62,15 +77,15 @@
         </div>
         <div class="row product-desc">
             <div class="col-xs-12 col-sm-5 col-md-5 col-sm-offset-1 col-lg-3 col-lg-offset-1">
-                <h2 class="visible-xs product-title">Майка белая</h2>
+                <h2 class="visible-xs product-title">{{ $product->name }}</h2>
                 <div class="row product-photo">
                     <div class="col-xs-12 visible-xs label-box">
-                        <span class="label-product label-new">Новинка</span>
+                        {{ \App\Helpers::product_label($product->label)}}
                     </div>
                     <div class="col-xs-12 slider-product-for">
                         {{--@dd($product->photos)--}}
                         @foreach($product->photos as $image)
-                            <img src="{{ url( 'uploads/' . $image ) }}" alt="">
+                            <img src="{{ url( 'uploads/' . $image ) }}" alt="{{ $product->name }}">
                         @endforeach
                     </div>
                     <div class="col-xs-12 slider-product-nav">
@@ -79,44 +94,36 @@
                                 $thumb = pathinfo($image);
                                 $thumb = url('uploads') . '/products/' . $thumb['filename'] . '_thumb.' . $thumb['extension'];
                             @endphp
-                            <img src="{{$thumb}}" alt="">
+                            <img src="{{ $thumb }}" alt="">
                         @endforeach
                     </div>
                 </div>
-            </div>
+            </div> 
             <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-1 col-lg-3 col-lg-offset-1">
                 <div class="row product-info">
                     <div class="col-xs-12 title-box hidden-xs">
-                        <h2>Майка белая</h2>
+                        <h2>{{ $product->name }}</h2>
                     </div>
-                    <div class="col-xs-12 product-size">
-                        <h4>Размер:</h4>
-                        <div class="size-box">
-                            <label class="radio-size">
-                                <input type="radio" name="size" value="1">
-                                <div class="radio-text">S</div>
-                            </label>
-                            <label class="radio-size">
-                                <input type="radio" name="size" value="2" checked>
-                                <div class="radio-text">M</div>
-                            </label>
-                            <label class="radio-size">
-                                <input type="radio" name="size" value="3">
-                                <div class="radio-text">L</div>
-                            </label>
-                            <label class="radio-size">
-                                <input type="radio" name="size" value="4">
-                                <div class="radio-text">XL</div>
-                            </label>
+                    @if(count($product->sizes))
+                        <div class="col-xs-12 product-size">
+                            <h4>Размер:</h4>
+                            <div class="size-box">
+                            @foreach ($product->sizes as $k => $size)
+                                <label class="radio-size">
+                                    <input type="radio" name="size" value="{{ strtoupper($size) }}">
+                                    <div class="radio-text">{{ strtoupper($size) }}</div>
+                                </label>
+                            @endforeach
+                            </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="col-xs-12 stock-price">
                         <div class="price-box">
                             <div class="price-old">
-                                <span>300</span> грн
+                                <span>{{ $product->base_price }}</span> грн
                             </div>
                             <div class="price">
-                                <span>100</span> грн
+                                <span>{{ $product->discount_price }}</span> грн
                             </div>
                         </div>
                         <button class="btn btn-primary green big-btn " name="submit">
@@ -136,15 +143,15 @@
                         <p>Футболка из высокаокачественных материалов, предназначенная дляФутболка из</p>
                     </div>
                     <div class="col-xs-12 info-button-box  hidden-xs">
-                        <a class="red-tooltip" data-toggle="tooltip" data-placement="bottom" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d!">
+                        <a class="red-tooltip" data-toggle="tooltip" data-placement="bottom" title="{{ $product->delivery or '' }}">
                             <i class="icon-info delivery"></i>
                             Доставка
                         </a>
-                        <a data-toggle="tooltip" data-placement="bottom" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d!">
+                        <a data-toggle="tooltip" data-placement="bottom" title="{{ $product->payment or '' }}">
                             <i class="icon-info payment"></i>
                             Оплата
                         </a>
-                        <a data-toggle="tooltip" data-placement="bottom" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d!">
+                        <a data-toggle="tooltip" data-placement="bottom" title="{{ $product->waranty or '' }}">
                             <i class="icon-info guarantee"></i>
                             Гарантия
                         </a>
@@ -155,30 +162,26 @@
             <div class="col-xs-12 col-sm-11 col-sm-offset-1 col-lg-2 col-lg-offset-1">
                 <div class="row products-compositions">
                     <div class="col-xs-12 title-box  hidden-xs">
-                        <span class="label-product-new">Новинка</span>
+                        {!! \App\Helpers::product_label($product->label) !!}
                     </div>
+                    @if($product->description)
                     <div class="col-xs-12 product-features visible-xs">
                         <h4>О товаре:</h4>
-                        <p>Футболка из высокаокачественных материалов, предназначенная дляФутболка из</p>
+                        {!! $product->description or '' !!}
                     </div>
+                    @endif
+                    @if($product->staff)
                     <div class="col-xs-12 compositions-box">
                         <h4>Состав:</h4>
-                        <table>
-                            <tr>
-                                <td class="title">Хлопок</td>
-                                <td class="value">80%</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Что-то еще</td>
-                                <td class="value">20%</td>
-                            </tr>
-                        </table>
+                        {!! $product->staff !!}
                     </div>
+                    @endif
+                    @if($product->something)
                     <div class="col-xs-12 product-features">
                         <h4>Особенности:</h4>
-                        <p>Футболка из высокаокачественных материалов, предназначенная дляФутболка из высокаокачественных материалов,
-                            предназначенная для</p>
+                      {!! $product->something !!}
                     </div>
+                    @endif
                     <div class="info-button-box col-xs-12 visible-xs">
                         <div class="panel-group" id="accordion">
                             <div class="panel panel-default">
@@ -192,9 +195,7 @@
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in">
                                     <div class="panel-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dol</p>
+                    {!! $product->delivery or '' !!}
                                     </div>
                                 </div>
                             </div>
@@ -209,9 +210,7 @@
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dol</p>
+                                        {!! $product->payment or '' !!}
                                     </div>
                                 </div>
                             </div>
@@ -226,9 +225,7 @@
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dol</p>
+                                        {!! $product->waranty or '' !!}
                                     </div>
                                 </div>
                             </div>
@@ -264,4 +261,34 @@
         $('[data-toggle="tooltip"]').tooltip();
       });
     </script>
+    <script>
+  $(document).ready(function () {
+
+    var quantitiy = 0;
+    $('.quantity-right-plus').click(function (e) {
+      // Stop acting like a button
+      e.preventDefault();
+      var $this = $(this).parents(".group-quantity");
+      // Get the field name
+      var quantity = parseInt($('.input-quantity', $this).val());
+      // If is not undefined
+      $('.input-quantity', $this).val(quantity + 1);
+      // Increment
+
+    });
+
+    $('.quantity-left-minus').click(function (e) {
+      // Stop acting like a button
+      e.preventDefault();
+      var $this = $(this).parents(".group-quantity");
+      // Get the field name
+      var quantity = parseInt($('.input-quantity', $this).val());
+      // Increment
+      if (quantity > 0) {
+        $('.input-quantity', $this).val(quantity - 1);
+      }
+    });
+
+  });
+</script>
 @endsection
