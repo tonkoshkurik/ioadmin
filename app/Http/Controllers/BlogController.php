@@ -37,6 +37,27 @@ class BlogController extends Controller
       return view('blog.index', $data);
     }
 
+    public function category($slug)
+    {
+      $posts = Post::whereHas('category', function($q) use($slug){
+        $q->where('slug', $slug);
+      })->paginate(4);
+
+      $data = [
+        'title' => 'Блог',
+        'menu' => MenuCRUD\app\Models\MenuItem::all(),
+        'cats' => Category::all(),
+        'posts' => $posts,
+//      ->map(function($item){
+//          $item->excerpt = Helpers::trim_text($item->content, 120);
+//          return $item;
+//        }),
+      ];
+
+      return view('blog.index', $data);
+//      dd($posts->toArray());
+    }
+
     public function post($slug)
     {
           $post = Post::findBySlug($slug);
@@ -49,6 +70,7 @@ class BlogController extends Controller
 
           return view('blog.post', $data);
     }
+
     public function addcomment($post)
     {
       $r = request();
@@ -68,7 +90,7 @@ class BlogController extends Controller
             ]);
 
       if ($validator->fails()) {
-            $flash = '<ul>';
+            $flash = '<ul class="margin-top30">';
             $errors = $validator->errors();
             foreach ($errors->all() as $message) {
                   $flash .= '<li>' . $message . '</li>';

@@ -116,7 +116,18 @@
                     <p>
                         За <b>5 сезонов «Зваженi та щасливi»</b> я открыл для себя, что «бабло побеждает жир». Оказалось, что главный мотиватор для людей, желающих похудеть, — соревновательный момент и… материальный стимул. Так родился <b>«ЖирКиллер»</b> — фитнес-игра, где худеют и выигрывают ценные призы и деньги.
                     </p><br>
-                    <a href="#" class="btn btn-primary about-btn hidden-xs">Подробнее <i class="arrow-alt-right"></i></a>
+                    <a href="#" class="btn btn-primary big-btn about-btn hidden-xs">Подробнее
+                        {{--<i class="arrow-alt-right"></i>--}}
+                        <i class="black">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">
+                                <path d="M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111
+                                               C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587
+                                               c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z"
+                                />
+                            </svg>
+                        </i>
+                    </a>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-5 col-lg-offset-1">
@@ -124,37 +135,21 @@
                     <p>
                         Позже появились регулярные программы без всяких соревнований: <b>«Формы в Норме»</b> — для тех, кто хочет привести тело в порядок и <b>«Міцні Горішки»</b> — с упором на бедра на ягодицы. Система тренировок и план питания всех трех проектов — мои авторские наработки. В них я вложил весь свой опыт, знания и желание привить любовь к спорту.
                     </p>
-                    <a href="#" class="btn btn-primary about-btn visible-xs">Подробнее <i class="arrow-alt-right"></i></a>
+                    <a href="http://zhirkiller.com/" class="btn btn-primary big-btn about-btn visible-xs">Подробнее
+                        <i class="black">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">
+                                <path d="M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111
+                                               C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587
+                                               c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z"
+                                />
+                            </svg>
+                        </i>
+                    </a>
                 </div>
             </div>
         </div>
-        <footer class="row">
-            <div class="col-md-11 col-md-offset-1">
-                <!-- Here is flex container should start -->
-                <div class="logo box">
-                    <img src="img/footer-logo.png" alt="Igor Obuhovsky logo">
-                    <p>© 2017 Copyright</p>
-                </div>
-                <ul class="menu box">
-                    <li class="menu-item"><a href="about.html">Обо мне</a></li>
-                    <li class="menu-item"><a href="#">Проекты</a></li>
-                    <li class="menu-item"><a href="#">Магазин</a></li>
-                    <li class="menu-item"><a href="#">Отзывы</a></li>
-                    <li class="menu-item"><a href="#">Блог</a></li>
-                    <li class="menu-item"><a href="#">Контакты</a></li>
-                </ul>
-                <div class="box phone">
-                    <p><i class="fas fa-phone"></i> 044 455 67 88</p>
-                    <p><i class="fas fa-envelope"></i> info@zhirkiller.com</p>
-                </div>
-                <div class="box social">
-                    <div style="font-size:23px; color:#695d6c;">
-                        <i class="fab fa-facebook-f" data-fa-transform="shrink-3.5 down-1.6 right-1.25" data-fa-mask="fas fa-circle"></i>
-                        <i class="fab fa-instagram" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
-                        <i class="fab fa-youtube" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('layouts.footer')
+
     </div>
 @endsection

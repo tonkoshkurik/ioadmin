@@ -28,9 +28,20 @@ class ReviewCategoryCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+//        $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+      $this->crud->addField([
+        'name' => 'name',
+        'label' => 'Name',
+      ]);
+      $this->crud->addField([
+        'name' => 'slug',
+        'label' => 'Slug (URL)',
+        'type' => 'text',
+        'hint' => 'Will be automatically generated from your name, if left empty.',
+        // 'disabled' => 'disabled'
+      ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');

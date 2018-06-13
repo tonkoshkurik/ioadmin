@@ -13,6 +13,11 @@ Route::group([
 ], function () { // custom admin routes
  CRUD::resource('review', 'ReviewCrudController');
  CRUD::resource('comment', 'CommentCrudController');
+
+  CRUD::resource('mainslider', 'MainSliderCrudController');
+  CRUD::resource('shopslider', 'ShopSliderCrudController');
+  CRUD::resource('product', 'ProductCrudController');
+  CRUD::resource('productcategory', 'ProductCategoryCrudController');
 //  CRUD::resource('article', 'ArticleCrudController');
 //  CRUD::resource('category', 'CategoryCrudController');
 //  CRUD::resource('tag', 'TagCrudController');

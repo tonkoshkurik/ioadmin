@@ -20,7 +20,7 @@ class ArticleCrudController extends CrudController
         */
         $this->crud->setModel("App\Models\Article");
         $this->crud->setRoute(config('backpack.base.route_prefix', 'admin').'/article');
-        $this->crud->setEntityNameStrings('article', 'articles');
+        $this->crud->setEntityNameStrings('Запись', 'Записи');
 
         /*
         |--------------------------------------------------------------------------
@@ -117,15 +117,15 @@ class ArticleCrudController extends CrudController
                                 'attribute' => 'name',
                                 'model' => "App\Models\Category",
                             ]);
-        $this->crud->addField([       // Select2Multiple = n-n relationship (with pivot table)
-                                'label' => 'Tags',
-                                'type' => 'select2_multiple',
-                                'name' => 'tags', // the method that defines the relationship in your Model
-                                'entity' => 'tags', // the method that defines the relationship in your Model
-                                'attribute' => 'name', // foreign key attribute that is shown to user
-                                'model' => "App\Models\Tag", // foreign key model
-                                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
-                            ]);
+//        $this->crud->addField([       // Select2Multiple = n-n relationship (with pivot table)
+//                                'label' => 'Tags',
+//                                'type' => 'select2_multiple',
+//                                'name' => 'tags', // the method that defines the relationship in your Model
+//                                'entity' => 'tags', // the method that defines the relationship in your Model
+//                                'attribute' => 'name', // foreign key attribute that is shown to user
+//                                'model' => "App\Models\Tag", // foreign key model
+//                                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+//                            ]);
         $this->crud->addField([    // ENUM
                                 'name' => 'status',
                                 'label' => 'Status',

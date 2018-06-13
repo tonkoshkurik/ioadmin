@@ -2,13 +2,13 @@
 .two-header {
     background: $bg-grey;
     color: #000;
-    margin-top: -30px;
+    // margin-top: -30px;
     .two-header-wrapper {
         display: flex;
         justify-content: space-between;
         align-content: space-around;
         align-items: center;
-        height: 180px;
+        // height: 180px;
         .menu-flex {
             display: flex;
             flex-wrap: wrap;
@@ -43,8 +43,8 @@
     .box-header {
         // flex-basis: 20%;
         flex: 2 3 auto;
-        height: 125px;
-        margin-top: 45px;
+        // height: 125px;
+        // margin-top: 45px;
     }
     .box-header-min {
         display: none;
@@ -55,7 +55,7 @@
             font-size: 30px;
         }
     }
-    @media all and( max-width: 600px) {
+    @media all and( max-width: 767px) {
         margin-top: -65px;
         .box-header {
             display: none;
@@ -69,9 +69,6 @@
             }
         }
     }
-}
-.comments-index.photo-page .comment {
-    padding: 0;
 }
 .comments-index {
     display: flex;

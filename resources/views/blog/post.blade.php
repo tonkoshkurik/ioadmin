@@ -10,7 +10,7 @@
       <div class="col-md-3 hidden-sm lang-container">
         <div class="box lang"></div>
         <div class="lang-switcher box lang">
-          <p style="text-align: left;">
+          <p style="display: none; text-align: left;">
             <span style="font-size: 12px; font-family: OpenSans; color: rgb(216, 209, 217);">Ru </span>
             <span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);"> En </span>
             <span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);">Uk</span>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    @include('flash::message')
+  @include('flash::message')
 
     <div class="row two-header">
         <div class="box-header-min blog">
@@ -36,14 +36,15 @@
       </div>
       <div class="col-sm-4 col-md-3">
         <a href="{{ url('blog') }}" class="back">
-          <i class="last-page-btn left"></i> Назад к статьям
+          <i class="last-page-btn left"></i>
+          Назад к статьям
         </a>
       </div>
     </div>
     <div class="row quote-row quote-row-blog col-sm-offset-1 hidden-sm hidden-md hidden-lg">
       <div class="col-xs-12">
         <a href="{{ url('blog') }}" class="back">
-          <i class="last-page-btn"></i>
+          <i class="last-page-btn left"></i>
         </a>
         <span class="pull-right" style="color:#000">Назад к статьям</span>
       </div>
@@ -70,7 +71,6 @@
 
             <ul id="comments" class="list-unstyled">
               @foreach ($post->comments as $comment)
-                  
               <li class="comment" >
                 <div  class="comment-body clearfix">
                   <div class="comment-meta">
@@ -87,6 +87,7 @@
               </li>
               <br>
               @endforeach
+            </ul>
               
             <form method="post" action={{ url('/blog/'. $post->id .'/comment') }} id="comment-form" class="fl-comment-form">
               @csrf
@@ -117,36 +118,6 @@
     </div>
 
 
-    <div class="row background-light-grey">
-      <div class="navigation">
-        <div class="col-xs-10 col-sm-offset-1">
-          <ul class="navs">
-            <li class="active">
-              <a href="#">1</a>
-            </li>
-            <li>
-              <a href="#">2</a>
-            </li>
-            <li>
-              <a href="#">3</a>
-            </li>
-            <li>…</li>
-            <li>
-              <a href="#">12</a>
-            </li>
-          </ul>
-          <div class="box">
-            <li class="next">
-              <a>Следующая
-                <i class="next-page-btn"></i>
-              </a>
-            </li>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
 
     @include('layouts.footer')
 
@@ -156,5 +127,7 @@
 @section('js')
 <script>
 $('div.alert').delay(3000).fadeOut(350);
+$('#flash-overlay-modal').modal();
+
 </script>
 @endsection

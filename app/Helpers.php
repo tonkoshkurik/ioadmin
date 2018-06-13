@@ -26,4 +26,20 @@ class Helpers {
 
     return $trimmed_text;
   }
+  public static function product_label($index)
+  {
+    switch ($index) {
+      case 'top':
+        return '<span class="label-product label-top">Tоп</span>';
+        break;
+      case 'new':
+        return '<span class="label-product label-new">Новинка</span>';
+        break;
+      case 'discount':
+        return '<span class="label-product label-discount">Скидка</span>';
+        break;
+      default:
+        return null;
+    }
+  }
 }

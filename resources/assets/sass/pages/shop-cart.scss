@@ -149,6 +149,7 @@
       &:hover {
         color: #aca4aa;
         text-decoration: none;
+        cursor: pointer;
       }
     }
 
@@ -166,6 +167,9 @@
       }
       &.left .tooltip-arrow {
         border-left-color: #faf8fa;
+      }
+      &.bottom .tooltip-arrow {
+        border-bottom-color: #faf8fa;
       }
     }
   }

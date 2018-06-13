@@ -110,6 +110,7 @@ class Article extends Model
 
     public function setThumbAttribute($value)
     {
+
     $attribute_name = 'thumb';
     $disk = 'uploads';
     $destination_path = 'images';

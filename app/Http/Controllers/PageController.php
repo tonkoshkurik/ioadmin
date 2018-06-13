@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Post;
 use Illuminate\Http\Request;
 use Backpack\MenuCRUD;
@@ -22,6 +23,7 @@ class PageController extends Controller
     $this->data['title'] = $page->title;
     $this->data['page'] =  $page->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
+
     $this->data['blog'] =  Post::all()->map(function($item){
       $item->except = $this->trim_text($item->content, 120);
       return $item;
@@ -34,6 +36,9 @@ class PageController extends Controller
 
     $this->data['reviews'] = Review::all();
 
+
+//    dd($this ->data['page']);
+
 //      ->toArray();
 
 //    dd($this->data['reviews'] );
@@ -41,6 +46,36 @@ class PageController extends Controller
     // => page - blog
 
     return view('pages.'.$page->template, $this->data);
+  }
+
+  public function reviews()
+  {
+    $page = Page::findBySlug('reviews');
+    $this->data['title'] = $page->title;
+    $this->data['page'] =  $page->withFakes();
+    $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
+    $this->data['reviews'] = Review::all();
+
+    return view('pages.reviews', $this->data);
+
+  }
+
+  public function shop($id=null)
+  {
+    $page = Page::findBySlug('shop');
+    $this->data['title'] = $page->title;
+    $this->data['page'] =  $page->withFakes();
+    $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
+    $this->data['products'] = Product::paginate(4);
+    return view('shop.index', $this->data);
+  }
+  public function product($slug)
+  {
+    $product = Product::findBySlug($slug);
+    $this->data['title'] = $product->title;
+    $this->data['product'] =  $product->withFakes();
+    $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
+    return view('shop.product', $this->data);
   }
 
   public function contacts()
