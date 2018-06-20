@@ -58,7 +58,6 @@ class PageController extends Controller
     $this->data['reviews'] = Review::all();
 
     return view('pages.reviews', $this->data);
-
   }
 
   public function shop($id=null)
@@ -74,6 +73,7 @@ class PageController extends Controller
   public function product($slug)
   {
     $product = Product::findBySlug($slug);
+    if(!$product) abort(404);
     $this->data['title'] = $product->name;
     $this->data['product'] =  $product->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();

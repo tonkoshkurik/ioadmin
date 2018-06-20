@@ -291,7 +291,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row" style="display:none">
         <div class="navigation">
             <div class="col-xs-10 col-sm-offset-1">
                 <ul class="navs">

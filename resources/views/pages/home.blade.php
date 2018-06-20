@@ -40,7 +40,7 @@
                 {!!  $slide->description  !!}
               </div>
               <div class="button">
-                <a href="{{ $slide->url }}" class="btn btn-primary big-btn @if($slide->id === 2) background-gren @endif">{{ $slide->button }}
+                <a href="{{ $slide->url }}" target="_blank" class="btn btn-primary big-btn @if($slide->id === 2) background-gren @endif">{{ $slide->button }}
                   <i class="black">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">

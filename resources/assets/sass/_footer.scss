@@ -1,4 +1,4 @@
-// FOOTER 
+// FOOTER
 
 footer {
     background: #312d32;
@@ -8,10 +8,19 @@ footer {
     z-index: 22;
     position: relative;
     .social {
-    //     font-size: 23px;
-    //     color: #695d6c;
-        svg{
+        a svg {
+            font-size: 23px;
+            color: #695d6c;
+        }
+        svg {
             margin: 10px;
+        }
+        & a:hover {
+            text-decoration: none;
+        }
+        & a:hover svg {
+            color: purple;
+            text-decoration: none;
         }
     }
 }
@@ -28,12 +37,12 @@ footer > div {
     }
     .logo {
         flex: 1;
-        color:#695d6c;
+        color: #695d6c;
         margin: 15px;
         img {
             padding: 12px 10px;
         }
-        p{
+        p {
             // padding-top: 20px;
         }
     }
@@ -52,18 +61,18 @@ footer > div {
         // margin: 0;
         margin: 25px 0;
         // width: 100%;
-        li{
+        li {
             flex: 1 0 33%;
         }
-        li>a {
+        li > a {
             font-size: 14px;
-            color: #aaa3ac; 
+            color: #aaa3ac;
             font-weight: 200;
-    }
+        }
     }
 }
 @media all and (min-width: 900px) {
-    footer>div ul.menu {
+    footer > div ul.menu {
         flex: 3 0 480px;
         width: 480px;
     }

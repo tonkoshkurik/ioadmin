@@ -58,6 +58,17 @@
       display: none;
     }
   }
+  @media all and (max-width: 767px) {
+    .shoping-cart{
+      a {
+        color: #000;
+        float: right;
+      }
+      .label {
+        color: black;
+      }
+    }
+  }
   .two-header-cart {
     display: flex;
     align-items: center;
@@ -76,7 +87,7 @@
       font-size: 20px;
       font-weight: normal;
       background-color: #dff0ef;
-      color: #000;
+      color: #000 !important;
       border-radius: 0px;
     }
   }
@@ -324,7 +335,7 @@
   }
 }
 
-#modal-cart {
+.modal-cart {
   .modal-content {
     padding: 10px;
     @media (max-width: 767px) {

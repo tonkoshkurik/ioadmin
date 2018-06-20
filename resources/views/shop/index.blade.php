@@ -1,22 +1,6 @@
 @extends('layouts.main')
 
 @section('body')
-    <div id="modal-cart" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button class="btn btn-primary green btn-close btn-close-modal" type="button" data-dismiss="modal">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    <h4>
-                        <img src="{{ url('../img/Icon1.png') }}"> Добавленные товары
-                    </h4>
-                </div>
-            <div id="shop-cart"></div>
-                
-            </div>
-        </div>
-    </div>
     <div class="page container-fluid">
         <div class="row header main green">
             <div class="col-xs-12 col-sm-8 col-sm-offset-1">
@@ -41,10 +25,9 @@
                     <h1>Магазин</h1>
                 </div>
                 <div class="menu-item">
-                    <a class="cats-toggle cart" data-toggle="modal" data-target="#modal-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="label green">2</span>
-                    </a>
+                    {{--   react app  --}}
+                    <div class="shop-cart"></div>
+                    {{-- END react app--}}
                 </div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 box-header-cart hidden-xs">
@@ -68,10 +51,9 @@
                     </ul>
                 </div>
                 <div class="two-header-cart hidden-xs">
-                    <a class="cats-toggle" href="#"  data-toggle="modal" data-target="#modal-cart">
-                        <i class="fas fa-shopping-cart"></i> Товаров добавлено
-                        <span class="label green">2</span>
-                    </a>
+                    {{--   react app  --}}
+                    <div class="shop-cart"></div>
+                    {{-- END react app--}}
                 </div>
             </div>
         </div>
@@ -90,7 +72,7 @@
                         <div class="element">
                             <div class="stock-text">
                                 <h2>{!! $slide->title !!}</h2>
-                          {!! $slide->description !!}
+                                {!! $slide->description !!}
                             </div>
                         </div>
                         <div class="element stock-img">
@@ -140,7 +122,9 @@
                             @php
                                 $photo = $product->photos[0];
                             @endphp
-                            <img src="{{ url('uploads/' . $photo) }}">
+                            <a href="{{ url('/product/'. $product->slug )}}">
+                                <img src="{{ url('uploads/' . $photo) }}">
+                            </a>
                             @endif
                             {!!   \App\Helpers::product_label($product->label) !!}
                         </div>

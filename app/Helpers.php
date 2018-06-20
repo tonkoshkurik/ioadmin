@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Illuminate\Support\Facades\DB;
 
 class Helpers {
   public static function trim_text($input, $length, $ellipses = true, $strip_html = true)
@@ -41,5 +42,9 @@ class Helpers {
       default:
         return null;
     }
+  }
+  public static function setting($key)
+  {
+    return DB::table('settings')->where('key', $key)->value('value');
   }
 }

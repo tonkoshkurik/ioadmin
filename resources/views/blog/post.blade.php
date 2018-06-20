@@ -25,14 +25,14 @@
     <div class="row two-header">
         <div class="box-header-min blog">
             <div class="menu-item">
-                <h1>Как быстро похудеть не меняя образа жизни?</h1>
+              <h1>{{ $post->title }}</h1>
             </div>
         </div>
     </div>
 
     <div class="row blog-post-header hidden-xs">
       <div class="col-sm-7 col-md-8 col-md-offset-1">
-        <h1>Как быстро похудеть не меняя образа жизни?</h1>
+        <h1>{{ $post->title }}</h1>
       </div>
       <div class="col-sm-4 col-md-3">
         <a href="{{ url('blog') }}" class="back">
