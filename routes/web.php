@@ -17,6 +17,10 @@
 Route::get('kontakty', 'PageController@contacts');
 Route::get('reviews', 'PageController@reviews');
 Route::get('shop', 'PageController@shop');
+Route::post('checkout', 'OrderController@checkout');
+//Route::post('checkout', 'OrderController@checkout');
+Route::get('checkout', 'PageController@checkout');
+Route::get('checkout/order/{id}', 'PageController@order');
 
 Route::get('product/{slug}', 'PageController@product');
 

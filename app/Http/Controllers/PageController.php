@@ -37,15 +37,6 @@ class PageController extends Controller
 
     $this->data['reviews'] = Review::all();
 
-
-//    dd($this ->data['page']);
-
-//      ->toArray();
-
-//    dd($this->data['reviews'] );
-
-    // => page - blog
-
     return view('pages.'.$page->template, $this->data);
   }
 
@@ -78,6 +69,14 @@ class PageController extends Controller
     $this->data['product'] =  $product->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
     return view('shop.product', $this->data);
+  }
+
+
+  public function checkout()
+  {
+    $this->data['title'] = "";
+    $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
+    return view('shop.checkout', $this->data);
   }
 
   public function contacts()

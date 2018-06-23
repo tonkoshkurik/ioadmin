@@ -3,21 +3,10 @@ import ReactDOM from 'react-dom';
 import store from '../store';
 import { Modal } from 'react-bootstrap';
 
-if (window.addEventListener)
-  addEventListener('storage', storage_event, false);
-else if (window.attachEvent)
-  attachEvent('onstorage', storage_event, false);
-function storage_event(e) {
-  console.log(e);
-  console.log("New value: "+ e.newValue);
-}
-
 
 class Cart extends Component {
   constructor(props, context) {
     super(props, context);
-
-    super (props);
     this.state = {
       products: [],
       show: false
@@ -169,7 +158,6 @@ class Cart extends Component {
                         <button
                           type="button"
                           className="quantity-right-plus btn btn-quantity"
-                          data-type="plus"
                           onClick={e => this.plus (prod.id, prod.size)}
                         >
                           <i className="fas fa-plus" />
@@ -190,10 +178,8 @@ class Cart extends Component {
           <Modal.Footer>
             <div className="row">
               <div className="col-xs-12  price-block">
-                <button
-                  className="btn btn-primary green big-btn btn-buy-order"
-                  name="submit"
-                >
+                <a href="/checkout"
+                 className="btn btn-primary green big-btn btn-buy-order">
                   <span>Оформить заказ</span>
                   <i className="black">
                     <svg
@@ -210,7 +196,7 @@ class Cart extends Component {
                                                                          c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z" />
                     </svg>
                   </i>
-                </button>
+                </a>
                 <div className="order-price">
                   <div>Всего</div>
                   <div className="sum-price">

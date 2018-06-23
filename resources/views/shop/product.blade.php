@@ -274,5 +274,8 @@
       $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
       });
+      $(window).on('load', function(){
+        $('.slider-product-for')[0].slick.setPosition()
+      });
     </script>
 @endsection

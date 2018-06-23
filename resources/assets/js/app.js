@@ -16,3 +16,4 @@ require('./bootstrap');
 require('./store')
 require('./components/Cart');
 require('./components/AddToCart');
+require('./components/Checkout');

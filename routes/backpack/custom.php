@@ -18,6 +18,7 @@ Route::group([
   CRUD::resource('shopslider', 'ShopSliderCrudController');
   CRUD::resource('product', 'ProductCrudController');
   CRUD::resource('productcategory', 'ProductCategoryCrudController');
+  CRUD::resource('order', 'OrderCrudController');
 //  CRUD::resource('article', 'ArticleCrudController');
 //  CRUD::resource('category', 'CategoryCrudController');
 //  CRUD::resource('tag', 'TagCrudController');
