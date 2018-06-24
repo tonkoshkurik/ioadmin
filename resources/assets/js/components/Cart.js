@@ -22,7 +22,6 @@ class Cart extends Component {
   }
 
   loadFromStorage() {
-    console.log('loading from storage')
     const cart = store.read('cart');
     if(cart){
       this.setState({products: cart })
@@ -40,7 +39,7 @@ class Cart extends Component {
 
   componentDidMount () {
     this.loadFromStorage();
-    document.addEventListener('added', this.loadFromStorage);
+    document.addEventListener('added', () => { this.loadFromStorage(); this.handleShow(); });
   }
 
   deleteProduct(id, size=null) {

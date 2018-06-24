@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Backpack\Settings\app\Models\Setting;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Backpack\MenuCRUD;
 use LiqPay;
 
 class OrderController extends Controller
@@ -30,6 +31,11 @@ class OrderController extends Controller
       'products' => 'required',
       'comment' => 'nullable',
       'call' => 'nullable',
+    ], [
+      'name' => 'Поле имя обязятально',
+      'phone' => 'Поле телефон обязятально',
+      'email' => 'Поле email обязятально',
+      'address' => 'Поле адресс обязятально',
     ]);
 
     function count_products_price($products){
@@ -64,12 +70,15 @@ class OrderController extends Controller
 
 //    dd($order-id);
 
-   return  response()->json($order->toArray());
+   return  response()->json($order->id);
   }
 
 
   public function order($id){
-    Order::find($id);
+    $this->data['title'] = "Оформление заказа";
+    $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
+    $this->data['order'] = Order::find($id);
+    return view('shop.order', $this->data);
   }
 
 

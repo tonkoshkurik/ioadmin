@@ -20,7 +20,7 @@ Route::get('shop', 'PageController@shop');
 Route::post('checkout', 'OrderController@checkout');
 //Route::post('checkout', 'OrderController@checkout');
 Route::get('checkout', 'PageController@checkout');
-Route::get('checkout/order/{id}', 'PageController@order');
+Route::get('checkout/order/{id}', 'OrderController@order');
 
 Route::get('product/{slug}', 'PageController@product');
 

@@ -13013,7 +13013,6 @@ var Cart = function (_Component) {
   _createClass(Cart, [{
     key: 'loadFromStorage',
     value: function loadFromStorage() {
-      console.log('loading from storage');
       var cart = __WEBPACK_IMPORTED_MODULE_2__store__["default"].read('cart');
       if (cart) {
         this.setState({ products: cart });
@@ -13033,8 +13032,12 @@ var Cart = function (_Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this2 = this;
+
       this.loadFromStorage();
-      document.addEventListener('added', this.loadFromStorage);
+      document.addEventListener('added', function () {
+        _this2.loadFromStorage();_this2.handleShow();
+      });
     }
   }, {
     key: 'deleteProduct',
@@ -13109,7 +13112,7 @@ var Cart = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var products = this.state.products;
 
@@ -13185,7 +13188,7 @@ var Cart = function (_Component) {
                       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { onClick: function onClick() {
-                            return _this2.deleteProduct(prod.id, prod.size);
+                            return _this3.deleteProduct(prod.id, prod.size);
                           }, className: 'btn btn-primary green btn-close' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-times' })
                       )
@@ -13209,7 +13212,7 @@ var Cart = function (_Component) {
                               type: 'button',
                               className: 'quantity-left-minus btn btn-quantity',
                               onClick: function onClick(e) {
-                                return _this2.minus(prod.id, prod.size);
+                                return _this3.minus(prod.id, prod.size);
                               }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-minus' })
@@ -13224,7 +13227,7 @@ var Cart = function (_Component) {
                           min: '1',
                           max: '100',
                           onChange: function onChange(e) {
-                            return _this2.prodQuantityChange(e.target.value, prod.id);
+                            return _this3.prodQuantityChange(e.target.value, prod.id);
                           }
                         }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -13236,7 +13239,7 @@ var Cart = function (_Component) {
                               type: 'button',
                               className: 'quantity-right-plus btn btn-quantity',
                               onClick: function onClick(e) {
-                                return _this2.plus(prod.id, prod.size);
+                                return _this3.plus(prod.id, prod.size);
                               }
                             },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-plus' })
@@ -45069,6 +45072,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helpers__ = __webpack_require__(365);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -45085,6 +45089,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var Checkout = function (_React$Component) {
     _inherits(Checkout, _React$Component);
 
@@ -45096,13 +45101,14 @@ var Checkout = function (_React$Component) {
         _this.state = {
             products: [],
             form: {
-                name: "",
-                phone: "",
-                email: "",
-                address: "",
-                call: false,
-                payment: "cach",
-                delivery: "nova_poshta"
+                name: { value: "" },
+                phone: { value: "" },
+                email: { value: "" },
+                comment: { value: "" },
+                address: { value: "" },
+                call: { value: "" },
+                payment: { value: "cash" },
+                delivery: { value: "nova_poshta" }
             },
             submited: false
         };
@@ -45131,11 +45137,21 @@ var Checkout = function (_React$Component) {
             //                     .map()
         }
     }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log('component unmount with state: ', this.state);
+        }
+    }, {
         key: 'loadFromStorage',
         value: function loadFromStorage() {
             var cart = __WEBPACK_IMPORTED_MODULE_2__store__["default"].read('cart');
+            var form = __WEBPACK_IMPORTED_MODULE_2__store__["default"].read('form');
+
             if (cart) {
                 this.setState({ products: cart });
+            }
+            if (form) {
+                this.setState({ form: form });
             }
         }
     }, {
@@ -45189,33 +45205,43 @@ var Checkout = function (_React$Component) {
             var target = event.target;
             var value = target.type === 'checkbox' ? target.checked : target.value;
             var name = target.name;
-            form[name] = value;
+            form[name].value = value;
             this.setState({ form: form });
         }
     }, {
         key: 'submit',
         value: function submit() {
             var _state = this.state,
-                form = _state.form,
                 products = _state.products,
                 submited = _state.submited;
 
+            var form = this.state.form;
+            // !!!!!!!!!!
+            // validation Must be required with some UI !
+            // !!!!!!!!!
             if (!submited) {
                 submited = true;
-            }
+                __WEBPACK_IMPORTED_MODULE_2__store__["default"].write('form', form);
 
-            (function () {
-                var executed = false;
-                return function () {
-                    window.axios.post('/checkout', _extends({}, form, { products: products
+                var formValues = {};
+                Object.keys(form).map(function (k) {
+                    formValues[k] = form[k].value;
+                });
+
+                (function () {
+                    window.axios.post('/checkout', _extends({}, formValues, { products: products
                     })).then(function (r) {
-                        return console.log(r.data);
+                        var id = r.data;
+                        console.log(id);
+                        if (id && Object(__WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* isInt */])(id)) {
+                            __WEBPACK_IMPORTED_MODULE_2__store__["default"].write('cart', []);
+                            window.location.href = 'checkout/order/' + id;
+                        }
                     }).catch(function (e) {
                         return console.log(e);
                     });
-                };
-            })();
-            // console.log(form, products);
+                })();
+            }
         }
     }, {
         key: 'plus',
@@ -45242,7 +45268,9 @@ var Checkout = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var products = this.state.products;
+            var _state2 = this.state,
+                products = _state2.products,
+                form = _state2.form;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
@@ -45413,7 +45441,7 @@ var Checkout = function (_React$Component) {
                                 { htmlFor: 'name' },
                                 '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0438\u043C\u044F:'
                             ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, type: 'text', name: 'name', className: 'form-control', placeholder: '\u0418\u0433\u043E\u0440\u044C \u041E\u0431\u0443\u0445\u043E\u0432\u0441\u043A\u0438\u0439' })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, type: 'text', value: form.name.value, name: 'name', className: 'form-control', placeholder: '\u0418\u0433\u043E\u0440\u044C \u041E\u0431\u0443\u0445\u043E\u0432\u0441\u043A\u0438\u0439' })
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
@@ -45423,7 +45451,7 @@ var Checkout = function (_React$Component) {
                                 { htmlFor: 'phone' },
                                 '\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u0435\u043B\u0435\u0444\u043E\u043D:'
                             ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, type: 'tel', id: 'phone', name: 'phone', className: 'form-control', placeholder: '+380 096 123 45 67' })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, type: 'tel', id: 'phone', value: form.phone.value, name: 'phone', className: 'form-control', placeholder: '+380 096 123 45 67' })
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
@@ -45433,7 +45461,7 @@ var Checkout = function (_React$Component) {
                                 { htmlFor: 'email' },
                                 'E-mail:'
                             ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, type: 'email', id: 'email', name: 'email', className: 'form-control', placeholder: 'boss@zhirkiller.info' })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, value: form.email.value, type: 'email', id: 'email', name: 'email', className: 'form-control', placeholder: 'boss@zhirkiller.info' })
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
@@ -45443,7 +45471,7 @@ var Checkout = function (_React$Component) {
                                 { htmlFor: 'comment' },
                                 '\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439 \u043A \u0437\u0430\u043A\u0430\u0437\u0443'
                             ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { onChange: this.handleChange, name: 'comment', id: 'comment', className: 'form-control', rows: '3' })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { onChange: this.handleChange, value: form.comment.value, name: 'comment', id: 'comment', className: 'form-control', rows: '3' })
                         )
                     )
                 ),
@@ -45467,7 +45495,7 @@ var Checkout = function (_React$Component) {
                                 { htmlFor: 'address' },
                                 '* \u0410\u0434\u0440\u0435\u0441 \u0434\u043E\u0441\u0442\u0430\u0432\u043A\u0438:'
                             ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, required: 'required', type: 'text', id: 'address', name: 'address', className: 'form-control', placeholder: '\u0433. \u041A\u0438\u0435\u0432, \u0443\u043B. \u041D\u043E\u0441\u043E\u0432\u0430, 23\\10' })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, value: form.address.value, required: 'required', type: 'text', id: 'address', name: 'address', className: 'form-control', placeholder: '\u0433. \u041A\u0438\u0435\u0432, \u0443\u043B. \u041D\u043E\u0441\u043E\u0432\u0430, 23\\10' })
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
@@ -45479,7 +45507,7 @@ var Checkout = function (_React$Component) {
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'select',
-                                { onChange: this.handleChange, name: 'delivery', id: 'delivery', className: 'form-control' },
+                                { onChange: this.handleChange, value: form.delivery.value, name: 'delivery', id: 'delivery', className: 'form-control' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'option',
                                     { value: 'nova_poshta' },
@@ -45497,7 +45525,7 @@ var Checkout = function (_React$Component) {
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'select',
-                                { onChange: this.handleChange, name: 'payment', id: 'payment', className: 'form-control' },
+                                { onChange: this.handleChange, value: form.payment.value, name: 'payment', id: 'payment', className: 'form-control' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'option',
                                     { value: 'cach' },
@@ -45516,7 +45544,7 @@ var Checkout = function (_React$Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'label',
                                 null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, type: 'checkbox', name: 'call', value: '' }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleChange, value: form.call.value, type: 'checkbox', name: 'call' }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'span',
                                     { className: 'cr' },
@@ -45560,7 +45588,6 @@ var Checkout = function (_React$Component) {
 
 var checkout = document.getElementById('checkout');
 if (checkout) {
-    console.log('hey here');
     __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Checkout, null), checkout);
 }
 
@@ -45569,6 +45596,52 @@ if (checkout) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = isInt;
+
+function isInt(value) {
+  return !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
+}
 
 /***/ })
 /******/ ]);

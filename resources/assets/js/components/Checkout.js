@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import store from "../store";
+import { isInt } from "../helpers";
 
 
 class Checkout extends React.Component {
@@ -10,13 +11,14 @@ class Checkout extends React.Component {
     this.state = {
       products: [],
       form: {
-        name: "",
-        phone: "",
-        email: "",
-        address: "",
-        call: false,
-        payment: "cach",
-        delivery: "nova_poshta"
+        name: {value:""},
+        phone: {value:""},
+        email: {value:""},
+        comment: {value: ""},
+        address:{value:""},
+        call: {value:""},
+        payment: {value: "cash"},
+        delivery: {value: "nova_poshta"}
       },
       submited: false,
     }
@@ -42,10 +44,19 @@ class Checkout extends React.Component {
     //                     .map()
   }
 
+  componentWillUnmount(){
+    console.log('component unmount with state: ', this.state);
+  }
+
   loadFromStorage() {
     const cart = store.read('cart');
+    const form = store.read('form');
+
     if(cart){
-      this.setState({products: cart })
+      this.setState({products: cart});
+    }
+    if(form){
+      this.setState({form});
     }
   }
 
@@ -84,29 +95,38 @@ class Checkout extends React.Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    form[name] = value;
+    form[name].value = value;
     this.setState({form: form});
   }
 
   submit() {
-    let { form, products, submited } = this.state;
+    let { products, submited } = this.state;
+    let form = this.state.form;
+    // !!!!!!!!!!
+    // validation Must be required with some UI !
+    // !!!!!!!!!
     if (!submited) {
       submited = true;
+      store.write('form', form);
 
+      let formValues = {};
+      Object.keys(form).map( k => { formValues[k] = form[k].value });
 
+      (function () {
+          window.axios.post('/checkout', {
+            ...formValues, products
+          })
+            .then(r => {
+              let id = r.data;
+              console.log(id);
+              if(id && isInt(id)){
+                store.write('cart', []);
+                window.location.href = `checkout/order/${id}` ;
+              }
+            } )
+            .catch(e => console.log(e));
+      })();
     }
-
-    (function() {
-      var executed = false;
-      return function () {
-        window.axios.post('/checkout', {
-          ...form, products
-        })
-          .then(r=>console.log(r.data))
-          .catch(e=>console.log(e));
-      };
-    })();
-    // console.log(form, products);
   }
 
   plus (id, size = null) {
@@ -123,7 +143,7 @@ class Checkout extends React.Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products, form } = this.state;
     return (
       <div className="row order-form">
       <div className="products-list-box col-xs-12 col-sm-11 col-sm-offset-1">
@@ -206,19 +226,19 @@ class Checkout extends React.Component {
           <form action="/action_page.php">
               <div className="form-group">
                   <label htmlFor="name">Введите имя:</label>
-                  <input onChange={this.handleChange}  type="text" name="name" className="form-control" placeholder="Игорь Обуховский" />
+                  <input onChange={this.handleChange}  type="text" value={form.name.value} name="name" className="form-control" placeholder="Игорь Обуховский" />
               </div>
               <div className="form-group">
                   <label htmlFor="phone">Введите телефон:</label>
-                  <input onChange={this.handleChange}  type="tel" id="phone" name="phone" className="form-control" placeholder="+380 096 123 45 67" />
+                  <input onChange={this.handleChange}  type="tel" id="phone" value={form.phone.value} name="phone" className="form-control" placeholder="+380 096 123 45 67" />
               </div>
               <div className="form-group">
                   <label htmlFor="email">E-mail:</label>
-                  <input onChange={this.handleChange}  type="email" id="email" name="email" className="form-control" placeholder="boss@zhirkiller.info" />
+                  <input onChange={this.handleChange} value={form.email.value}  type="email" id="email" name="email" className="form-control" placeholder="boss@zhirkiller.info" />
               </div>
               <div className="form-group">
                   <label htmlFor="comment">Комментарий к заказу</label>
-                  <textarea  onChange={this.handleChange}  name="comment" id="comment" className="form-control" rows="3"></textarea>
+                  <textarea  onChange={this.handleChange} value={form.comment.value} name="comment" id="comment" className="form-control" rows="3"></textarea>
               </div>
           </form>
       </div>
@@ -229,24 +249,24 @@ class Checkout extends React.Component {
           <form action="/checkout.php" method="POST">
               <div className="form-group">
                   <label htmlFor="address">* Адрес доставки:</label>
-                  <input onChange={this.handleChange} required={'required'}  type="text" id="address" name="address" className="form-control" placeholder="г. Киев, ул. Носова, 23\10" />
+                  <input onChange={this.handleChange}  value={form.address.value}  required={'required'}  type="text" id="address" name="address" className="form-control" placeholder="г. Киев, ул. Носова, 23\10" />
               </div>
               <div className="form-group">
                   <label htmlFor="delivery">* Выберите метод доставки:</label>
-                  <select onChange={this.handleChange}  name="delivery" id="delivery" className="form-control">
+                  <select onChange={this.handleChange} value={form.delivery.value}   name="delivery" id="delivery" className="form-control">
                       <option value="nova_poshta">Новая почта</option>
                   </select>
               </div>
               <div className="form-group">
                   <label htmlFor="payment">* Выберите метод оплаты:</label>
-                  <select onChange={this.handleChange} name="payment" id="payment" className="form-control">
+                  <select onChange={this.handleChange} value={form.payment.value}  name="payment" id="payment" className="form-control">
                       <option value="cach">Наличными при получении</option>
                       <option value="liqpay">Картой</option>
                   </select>
               </div>
               <div className="form-group checkbox">
                   <label>
-                      <input onChange={this.handleChange} type="checkbox" name="call" value="" />
+                      <input onChange={this.handleChange} value={form.call.value}  type="checkbox" name="call" />
                       <span className="cr">
                           <i className="cr-icon glyphicon glyphicon-ok"></i>
                       </span>
@@ -275,6 +295,5 @@ class Checkout extends React.Component {
 
 let checkout = document.getElementById('checkout');
 if ( checkout ){
-  console.log('hey here');
   ReactDOM.render (<Checkout />, checkout)
 }

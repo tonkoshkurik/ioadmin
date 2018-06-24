@@ -61,10 +61,16 @@ class PageController extends Controller
     $this->data['products'] = Product::paginate(4);
     return view('shop.index', $this->data);
   }
+  
   public function product($slug)
   {
     $product = Product::findBySlug($slug);
-    if(!$product) abort(404);
+    if(!$product) {
+      $product = Product::find($slug);
+      if (!$product) {
+        return abort(404);
+      }
+    }
     $this->data['title'] = $product->name;
     $this->data['product'] =  $product->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
@@ -74,7 +80,7 @@ class PageController extends Controller
 
   public function checkout()
   {
-    $this->data['title'] = "";
+    $this->data['title'] = "Оформление заказа";
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
     return view('shop.checkout', $this->data);
   }

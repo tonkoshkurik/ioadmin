@@ -27,7 +27,6 @@
           </div>
           <div class="menu-item">
               {{--   react app  --}}
-              <div class="shop-cart"></div>
               {{-- END react app--}}
           </div>
       </div>
@@ -37,20 +36,7 @@
                 <h1>Оформление
                       <br> заказа</h1>
               </div>
-              <a href="#" class="cats-toggle collapse">Список товаров
-                  <i class="fas fa-angle-down"></i>
-              </a>
-              <ul class="menu menu-flex">
-                  <li class="menu-item">
-                      <a href="#">Фото</a>
-                  </li>
-                  <li class="menu-item">
-                      <a href="#">Видео</a>
-                  </li>
-                  <li class="menu-item">
-                      <a href="#">Отзывы</a>
-                  </li>
-              </ul>
+
           </div>
           <div class="two-header-cart hidden-xs">
               {{--   react app  --}}
