@@ -15,7 +15,7 @@
 
     @yield('header')
 </head>
-<body class="page-default {{ isset($body_class) ? $body_class : '' }}">
+<body class="page-default {{  $body_class or '' }}">
 
 @yield('body')
 

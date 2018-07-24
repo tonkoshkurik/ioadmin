@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import { render } from 'react-dom';
 import store from '../store';
 
 const event = new Event('added');
@@ -54,5 +54,5 @@ let button = document.getElementById('add-to-cart');
 
 if(button) {
   let { id, name, image, price } = button.dataset;
-  ReactDOM.render (<AddToCart id={id} name={name}  image={image} price={price}/>, document.getElementById('add-to-cart'));
+  render (<AddToCart id={id} name={name}  image={image} price={price}/>, document.getElementById('add-to-cart'));
 }

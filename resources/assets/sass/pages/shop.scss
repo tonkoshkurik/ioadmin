@@ -59,10 +59,15 @@
     }
   }
   @media all and (max-width: 767px) {
-    .shoping-cart{
+    .cart-mini{
       a {
         color: #000;
         float: right;
+        font-size: 26px;
+        display: block;
+        position: absolute;
+        bottom: 23px;
+        right: 15px;
       }
       .label {
         color: black;

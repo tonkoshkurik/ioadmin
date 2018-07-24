@@ -5,7 +5,7 @@
 <li><a href="{{backpack_url('page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
 <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/menu-item') }}"><i class="fa fa-list"></i> <span>Menu</span></a></li>
 <li><a href="{{ url('admin/review') }}"><i class="fa fa-comment"></i>Отзывы</a></li>
-<li><a href="{{ url('admin/order') }}"><i class="fa fa-order"></i>Отзывы</a></li>
+<li><a href="{{ url('admin/order') }}"><i class="fa fa-angellist"></i>Заказы</a></li>
 <li><a href="{{ url('admin/mainslider') }}"><i class="fa fa-chevron-circle-right"></i>Главный слайдер</a></li>
 <li class="treeview">
     <a href="#"><i class="fa fa-newspaper-o"></i> <span>Магазин</span> <i class="fa fa-angle-left pull-right"></i></a>

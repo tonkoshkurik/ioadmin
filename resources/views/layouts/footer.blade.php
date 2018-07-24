@@ -7,7 +7,7 @@
             <img src="{{ asset('img/footer-logo.png') }}" alt="Igor Obuhovsky logo">
             <p>© 2017 Copyright</p>
         </div>
-        <ul class="menu box">
+        <ul class="menu box" style="margin:0">
             {{--Menu--}}
             @foreach($menu as $menuitem)
                 <li class="menu-item">

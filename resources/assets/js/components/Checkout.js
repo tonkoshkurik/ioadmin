@@ -117,11 +117,18 @@ class Checkout extends React.Component {
             ...formValues, products
           })
             .then(r => {
+              console.log(r.code);
               let id = r.data;
-              console.log(id);
+              console.log(isInt(id));
               if(id && isInt(id)){
                 store.write('cart', []);
                 window.location.href = `checkout/order/${id}` ;
+              } else if(id){
+                let c = document.querySelector('#checkout');
+                if(c) {
+                  c.innerHTML = id ;
+                  document.forms[0].submit();
+                }
               }
             } )
             .catch(e => console.log(e));
@@ -246,7 +253,7 @@ class Checkout extends React.Component {
           <h2>
               <img src="../img/Icon.png" /> Доставка
           </h2>
-          <form action="/checkout.php" method="POST">
+          <form method="POST">
               <div className="form-group">
                   <label htmlFor="address">* Адрес доставки:</label>
                   <input onChange={this.handleChange}  value={form.address.value}  required={'required'}  type="text" id="address" name="address" className="form-control" placeholder="г. Киев, ул. Носова, 23\10" />
@@ -260,7 +267,7 @@ class Checkout extends React.Component {
               <div className="form-group">
                   <label htmlFor="payment">* Выберите метод оплаты:</label>
                   <select onChange={this.handleChange} value={form.payment.value}  name="payment" id="payment" className="form-control">
-                      <option value="cach">Наличными при получении</option>
+                      <option value="cash">Наличными при получении</option>
                       <option value="liqpay">Картой</option>
                   </select>
               </div>
@@ -273,7 +280,8 @@ class Checkout extends React.Component {
                       <span className="text-justify">Мне не нужно перезванивать</span>
                   </label>
               </div>
-              <button className="btn btn-primary green big-btn btn-buy-order hidden-xs" onClick={this.submit}>
+              <button className="btn btn-primary green big-btn btn-buy-order hidden-xs"
+                      onClick={(e)=>{ e.preventDefault(); this.submit()} }>
                   <span>Оформить заказ</span>
                   <i className="black">
                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

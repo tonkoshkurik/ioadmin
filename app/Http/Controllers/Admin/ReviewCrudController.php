@@ -75,7 +75,7 @@ class ReviewCrudController extends CrudController
       $this->crud->addField([
         'label' => "Видео",
         'name' => 'video',
-        'type' => 'text',
+        'type' => 'url',
       ]);
 
       $this->crud->addField([
@@ -90,6 +90,8 @@ class ReviewCrudController extends CrudController
         'type' => 'text',
       ]);
 
+
+
 //      $this->crud->addField([
 //        'label' => "Результат (см)",
 //        'name' => 'result_sm', // the db column for the foreign key
@@ -103,7 +105,16 @@ class ReviewCrudController extends CrudController
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
-         $this->crud->addColumns(['name', 'result_kg']); // add multiple columns, at the end of the stack
+      $this->crud->addColumns(['name', 'result_kg']); // add multiple columns, at the end of the stack
+      $this->crud->addColumn([
+        'name' => 'category_id',
+        'label' => 'Категория',
+        'type' => 'closure',
+        'function' => function($entry) {
+          $options = [ 1 => 'Фото', 2 => 'Отзывы', 3 => 'Видео'];
+          return $options[$entry->category_id];
+        }
+      ]);
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)

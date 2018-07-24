@@ -1,5 +1,5 @@
 if (!localStorage) {
-  console.log("LocaleStorage is not supported, data will not be persisted")
+  console.log("LocaleStorage is not supported, data will not be persisted");
 
   // Let the program use a stub object to proceed
   localStorage = {};
@@ -12,18 +12,18 @@ if (!localStorage) {
 }
 
 const store = {
-  read: function(key) {
+  read(key) {
     if (localStorage[key])
       return JSON.parse(localStorage[key])
 
     return null;
   },
 
-  write: function(key, value) {
+  write(key, value) {
     localStorage.setItem(key, JSON.stringify(value))
   },
 
-  clear: function(key) {
+  clear(key) {
     localStorage.removeItem(key);
   }
 }

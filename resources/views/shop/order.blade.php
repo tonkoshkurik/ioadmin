@@ -10,11 +10,27 @@
     <div class="col-md-3 hidden-sm lang-container">
       <div class="box lang"></div>
       <div class="lang-switcher box lang">
-        <p style="display: none; text-align: left;">
-          <a href="#" class="active">Ru </a>
-          <a href="#"> En </a>
-          <a href="#">Uk</a>
-        </p>
+          <p style="text-align: left;">
+                        <span>
+                        <a href="{{ url(\App\Helpers::setting('facebook')) }}" target="_blank" style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-facebook-f" data-fa-transform="shrink-3.5 down-1.6 right-1.25" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+              <span>
+
+                        <a href="{{ url( \App\Helpers::setting('instagram') ) }}" target="_blank"  style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-instagram" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+              <span>
+                        <a href="{{url( \App\Helpers::setting('youtube')) }}" target="_blank" style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-youtube" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+              {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(216, 209, 217);">Ru </span>--}}
+              {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);"> En </span>--}}
+              {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);">Uk</span>--}}
+          </p>
       </div>
       <div class="box lang"></div>
     </div>
@@ -61,4 +77,5 @@
 
   @include('layouts.footer');
 </div>
+<div class="shop-cart"></div>
 @endsection

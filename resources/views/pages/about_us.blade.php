@@ -10,10 +10,26 @@
             <div class="col-md-3 col-md-offset-1 hidden-sm lang-container">
                 <div class="box lang"></div>
                 <div class="lang-switcher box lang">
-                    <p style="text-align: left; display: none;">
-                        <span style="font-size: 12px; font-family: OpenSans; color: rgb(216, 209, 217);">Ru </span>
-                        <span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);"> En </span>
-                        <span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);">Uk</span>
+                    <p style="text-align: left;">
+                        <span>
+                        <a href="{{ url(\App\Helpers::setting('facebook')) }}" target="_blank" style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-facebook-f" data-fa-transform="shrink-3.5 down-1.6 right-1.25" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+                        <span>
+
+                        <a href="{{ url( \App\Helpers::setting('instagram') ) }}" target="_blank"  style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-instagram" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+                        <span>
+                        <a href="{{url( \App\Helpers::setting('youtube')) }}" target="_blank" style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-youtube" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+                        {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(216, 209, 217);">Ru </span>--}}
+                        {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);"> En </span>--}}
+                        {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);">Uk</span>--}}
                     </p>
                 </div>
                 <div class="box lang"></div>
@@ -135,7 +151,7 @@
                     <p>
                         Позже появились регулярные программы без всяких соревнований: <b>«Формы в Норме»</b> — для тех, кто хочет привести тело в порядок и <b>«Міцні Горішки»</b> — с упором на бедра на ягодицы. Система тренировок и план питания всех трех проектов — мои авторские наработки. В них я вложил весь свой опыт, знания и желание привить любовь к спорту.
                     </p>
-                    <a href="http://zhirkiller.com/" class="btn btn-primary big-btn about-btn visible-xs">Подробнее
+                    <a href="{{ $page->project_link }}" class="btn btn-primary big-btn about-btn visible-xs">Подробнее
                         <i class="black">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve">

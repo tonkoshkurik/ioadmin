@@ -6,7 +6,8 @@ use Backpack\Settings\app\Models\Setting;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Backpack\MenuCRUD;
-use LiqPay;
+use App\LiqPay;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -15,8 +16,8 @@ class OrderController extends Controller
   protected $private_key;
 
   function __construct() {
-//    $this->public_key = Setting::where('key', 'public_key')->value('value');
-//    $this->private_key = Setting::where('key', 'private_key')->value('value');
+    $this->public_key = Setting::where('key', 'public_key')->value('value');
+    $this->private_key = Setting::where('key', 'private_key')->value('value');
   }
 
   public function checkout(Request $request)
@@ -24,7 +25,7 @@ class OrderController extends Controller
     $validatedData = request()->validate([
       'name' => 'required|max:255',
       'phone' => 'required',
-      'email' => 'required',
+      'email' => 'required|email',
       'address' => 'required|min:3',
       'payment' => 'required',
       'delivery' => 'required',
@@ -60,15 +61,27 @@ class OrderController extends Controller
       ]
     );
 
-//    $order->order = collect($validatedData['products'])->toArray();
-//    $order->lead = collect($validatedData)->only('name', 'email', 'phone', 'address', 'payment')->toArray();
-//    $order->delivery  = $validatedData['delivery'];
-//    $order->status  = null;
-//    $order->call = (boolean) $validatedData['call'];
-//    $order->sum = count_products_price($validatedData['products']);
-//    $order->save();
 
-//    dd($order-id);
+    if($validatedData['payment'] === 'liqpay') {
+      $liqpay = new LiqPay($this->public_key, $this->private_key);
+
+      $liqpay_form = $liqpay->cnb_form(array(
+        'action'         => 'pay',
+        'amount'         => $order->sum,
+        'currency'       => 'UAH',
+        'description'    => sprintf('Оплата заказа # %d', $order->id ),
+        'order_id'       =>  $request->order_id,
+        'version'        => '3',
+        'result_url'     => url('/checkout/order/' . $order->id ),
+        'sandbox'        => '1',
+        'server_url'     => url('/checkout/payed')
+      ));
+
+      return response($liqpay_form, 200)->header('Content-Type', 'text/html');
+
+      return view('shop.liqpay', compact('order', 'liqpay_form'));
+    }
+
 
    return  response()->json($order->id);
   }
@@ -85,26 +98,37 @@ class OrderController extends Controller
 
   public function liqpay(Request $request)
   {
-
-
-//      'status',
-//      'call'
+    $order = Order::find((int)$request->id);
 
     if($request->payment = "liqpay" ) {
       $liqpay = new LiqPay($this->public_key, $this->private_key);
+
       $html = $liqpay->cnb_form(array(
         'action'         => 'pay',
-        'amount'         => '1',
-        'currency'       => 'USD',
-        'description'    => 'description text',
-        'order_id'       => 'order_id_1',
-        'version'        => '3'
+        'amount'         => $order->sum,
+        'currency'       => 'UAN',
+        'description'    => sprintf('Оплата заказа # %d', $order->id ),
+        'order_id'       =>  $request->order_id,
+        'version'        => '3',
+        'result_url'     => url('/order/' . $order->id ),
+        'sandbox'        => '1',
+        'server_url'     => url('/checkout/payed')
       ));
 
       // And client send this facking form
     }
    // let's make the order from route we getting post reqest with nonce
-
-
   }
+
+  // Liqpay callback for payed Orders
+  public function payed(Request $request)
+  {
+    $data = base64_decode($request->data);
+    $sign = base64_encode( sha1( $this->private_key . $request->data . $this->private_key, 1) );
+
+    if($request->signature == $sign){
+      // Send to AMO
+    }
+  }
+
 }

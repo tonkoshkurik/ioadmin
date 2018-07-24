@@ -35,9 +35,75 @@ class OrderCrudController extends CrudController
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
+      $this->crud->addField([ // Table
+        'name' => 'order',
+        'label' => 'Заказ',
+        'type' => 'table',
+        'columns' => [
+          'name' => 'Название',
+          'size' => 'Размер',
+          'price' => 'Цена',
+          'image' => 'Изображение',
+          'q' => 'Количество'
+        ],
+        'readonly'=>'readonly',
+//        'max' => 5, // maximum rows allowed in the table
+//        'min' => 0 // minimum rows allowed in the table
+      ]);
+
+
+      $this->crud->addField(
+        [
+          'name' => 'Lead',
+          'type' => 'lead'
+        ]
+      );
+
+      $this->crud->addField(
+        [
+        'name' => 'sum',
+          'label' => 'Сумма',
+          'type'=>'number',
+          'readonly'=>'readonly',
+        ]
+      );
+
+      $this->crud->addField(
+        [
+          'name' => 'call',
+          'label' => 'Перезвон?',
+          'type' => 'checkbox',
+        ]
+      );
+
+
+
 
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+      $this->crud->addColumn(
+        [
+          'name'=>'id',
+          'label' => '#'
+        ]
+      );
+         $this->crud->addColumn(
+           [
+             'name' => 'order', // The db column name
+             'label' => "Order", // Table column heading
+             'type' => 'multidimensional_array',
+             'visible_key' => 'name' // The key to the attribute you would like shown in the enumeration
+           ]
+         );
+
+      $this->crud->addColumn(
+        [
+          'name' => 'call',
+          'label' => 'Перезвон?',
+          'type' => 'boolean',
+          // optionally override the Yes/No texts
+          // 'options' => [0 => 'Active', 1 => 'Inactive']
+        ]
+      );
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -55,7 +121,7 @@ class OrderCrudController extends CrudController
         // $this->crud->removeAllButtonsFromStack('line');
 
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+         $this->crud->allowAccess(['list', 'create',  'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER

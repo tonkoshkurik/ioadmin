@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import store from '../store';
 import { Modal } from 'react-bootstrap';
 
@@ -39,7 +39,7 @@ class Cart extends Component {
 
   componentDidMount () {
     this.loadFromStorage();
-    document.addEventListener('added', () => { this.loadFromStorage(); this.handleShow(); });
+    document.addEventListener('added', () => { this.handleShow(); });
   }
 
   deleteProduct(id, size=null) {
@@ -93,12 +93,6 @@ class Cart extends Component {
     const  { products } =  this.state;
     return (
       <div className="shoping-cart">
-
-        <a href="#"  onClick={this.handleShow}>
-          <i className="fas fa-shopping-cart"></i> <span className="hidden-xs">Товаров добавлено</span>
-          <span className="label green">{ products.length }</span>
-        </a>
-
         <Modal show={this.state.show} className="modal-cart" onHide={this.handleClose}>
           <Modal.Header>
             <button className="btn btn-primary green btn-close btn-close-modal" type="button" onClick={this.handleClose}>
@@ -214,9 +208,7 @@ class Cart extends Component {
   }
 }
 
-let carts = document.getElementsByClassName ('shop-cart');
-if ( carts.length ){
-    for(let i=0; i < carts.length; i++){
-      ReactDOM.render (<Cart />, carts[i])
-    }
+let cart = document.querySelector('.shop-cart');
+if (cart){
+  render (<Cart />, cart)
 }

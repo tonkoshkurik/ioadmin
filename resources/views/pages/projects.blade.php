@@ -12,10 +12,26 @@
             <div class="col-md-3 col-md-offset-1 hidden-sm lang-container">
                 <div class="box lang"></div>
                 <div class="lang-switcher box lang">
-                    <p style="text-align: left; display: none">
-                        <span style="font-size: 12px; font-family: OpenSans; color: rgb(216, 209, 217);">Ru </span>
-                        <span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);"> En </span>
-                        <span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);">Uk</span>
+                    <p style="text-align: left;">
+                        <span>
+                        <a href="{{ url(\App\Helpers::setting('facebook')) }}" target="_blank" style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-facebook-f" data-fa-transform="shrink-3.5 down-1.6 right-1.25" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+                        <span>
+
+                        <a href="{{ url( \App\Helpers::setting('instagram') ) }}" target="_blank"  style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-instagram" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+                        <span>
+                        <a href="{{url( \App\Helpers::setting('youtube')) }}" target="_blank" style="font-size:23px; color:#695d6c;">
+                            <i class="fab fa-youtube" data-fa-transform="shrink-3.5" data-fa-mask="fas fa-circle"></i>
+                        </a>
+                        </span>
+                        {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(216, 209, 217);">Ru </span>--}}
+                        {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);"> En </span>--}}
+                        {{--<span style="font-size: 12px; font-family: OpenSans; color: rgb(85, 77, 87);">Uk</span>--}}
                     </p>
                 </div>
                 <div class="box lang"></div>
@@ -109,7 +125,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-dop-info project1 arrow-alt-right">
+                    <a href="{{ $page->zhir_url }}" class="btn btn-dop-info project1 arrow-alt-right">
                         <span>Подробнее</span>
                         <i class="blue">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -156,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-dop-info project2 arrow-alt-right">
+                    <a href="{{ $page->formi_url }}" class="btn btn-dop-info project2 arrow-alt-right">
                         <span>Подробнее</span>
                         <i class="blue">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -207,7 +223,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-dop-info project3 arrow-alt-right">
+                    <a href="{{ $page->gorishki_url }}" class="btn btn-dop-info project3 arrow-alt-right">
                         <span>Подробнее</span>
                         <i class="blue">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

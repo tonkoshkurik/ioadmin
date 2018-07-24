@@ -15,12 +15,13 @@
 
 
 Route::get('kontakty', 'PageController@contacts');
-Route::get('reviews', 'PageController@reviews');
+Route::get('reviews/{id?}', 'PageController@reviews');
 Route::get('shop', 'PageController@shop');
 Route::post('checkout', 'OrderController@checkout');
 //Route::post('checkout', 'OrderController@checkout');
 Route::get('checkout', 'PageController@checkout');
 Route::get('checkout/order/{id}', 'OrderController@order');
+Route::post('checkout/payed', 'OrderController@payed');
 
 Route::get('product/{slug}', 'PageController@product');
 

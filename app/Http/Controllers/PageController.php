@@ -25,7 +25,7 @@ class PageController extends Controller
     $this->data['page'] =  $page->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
 
-    $this->data['blog'] =  Post::all()->map(function($item){
+    $this->data['blog'] =  Post::where('status', 'PUBLISHED')->get()->map(function($item){
       $item->except = $this->trim_text($item->content, 120);
       return $item;
     });
@@ -40,12 +40,14 @@ class PageController extends Controller
     return view('pages.'.$page->template, $this->data);
   }
 
-  public function reviews()
+  public function reviews($id=null)
   {
     $page = Page::findBySlug('reviews');
     $this->data['title'] = $page->title;
     $this->data['page'] =  $page->withFakes();
     $this->data['menu'] =  MenuCRUD\app\Models\MenuItem::all();
+    if(!$id) return redirect('/reviews/1');
+    $this->data['category_id'] = $id;
     $this->data['reviews'] = Review::all();
 
     return view('pages.reviews', $this->data);
@@ -61,7 +63,7 @@ class PageController extends Controller
     $this->data['products'] = Product::paginate(4);
     return view('shop.index', $this->data);
   }
-  
+
   public function product($slug)
   {
     $product = Product::findBySlug($slug);

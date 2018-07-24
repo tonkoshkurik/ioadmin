@@ -29,6 +29,15 @@ trait PageTemplates
                         'type' => 'wysiwyg',
                         'placeholder' => trans('backpack::pagemanager.content_placeholder'),
                     ]);
+
+      $this->crud->addField([
+        'label' => 'Ссылка в блоке Проекты',
+        'type' => 'url',
+        'name' => 'project_link',
+        'fake' => true,
+        'store_in' => 'extras',
+      ]);
+
     }
 
 
@@ -269,6 +278,31 @@ trait PageTemplates
         'type' => 'custom_html',
         'value' => '<br><h2>'.trans('backpack::pagemanager.content').'</h2><hr>',
       ]);
+
+      $this->crud->addField([
+        'name' => 'zhir_url',
+        'label' => 'ЖирКиллер - link',
+        'fake' => true,
+        'type' => 'url',
+        'store_in' => 'extras',
+      ]);
+
+      $this->crud->addField([
+        'name' => 'formi_url',
+        'label' => '«Формы в Норме» - link',
+        'fake' => true,
+        'type' => 'url',
+        'store_in' => 'extras',
+      ]);
+
+      $this->crud->addField([
+        'name' => 'gorishki_url',
+        'label' => '«Міцні горішки» - link',
+        'fake' => true,
+        'type' => 'url',
+        'store_in' => 'extras',
+      ]);
+
       $this->crud->addField([
         'name' => 'content',
         'label' => trans('backpack::pagemanager.content'),
@@ -297,6 +331,7 @@ trait PageTemplates
         'fake' => true,
         'store_in' => 'extras',
       ]);
+
       $this->crud->addField([
         'name' => 'meta_keywords',
         'type' => 'textarea',

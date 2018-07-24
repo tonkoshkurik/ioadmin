@@ -52,7 +52,7 @@
 
     <div class="row post">
       @if($post->image)  
-        <img src="{{ url($post->image) }}" alt="{{ $post->title }}">
+        <img src="{{ url($post->image) }}" alt="{{ $post->title }}" class="img-responsive post-thumb">
       @endif
       <div class="col-xs-12">
         <div class="post-container">
